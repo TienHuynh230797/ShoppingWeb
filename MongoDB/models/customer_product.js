@@ -8,13 +8,13 @@ var customer_productSchema = new Schema({
     price: {type: Number, required: true},
     discount_value: {type: Number},
     dateofpurchase: {
-        type: Date,
+        type: Date/*,
         validate: {
             validate: function (value) {
                 return /\d{2}-\d{2}-\d{4}/.test(value);
             },
             message: '{VALUE} is not a valid date of purchase '
         },
-    }
+    */}
 });
 var customer_product = mongoose.model('Customer_Product', customer_productSchema );

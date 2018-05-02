@@ -7,11 +7,10 @@ var Supplier = require('./models/supplier');
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb://localhost:27017/shoppingDB';
-
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
-mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var customers = [];
 var customers_products = [];
