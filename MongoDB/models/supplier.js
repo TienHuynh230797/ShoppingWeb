@@ -7,4 +7,4 @@ var supplierSchema = new Schema({
     telephone: {type: String, max: 12},
     email: {type: String, max: 50},
 });
-var supplier = mongoose.model('Supplier', supplierSchema );
+module.exports  = mongoose.model('Supplier', supplierSchema );

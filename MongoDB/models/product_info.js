@@ -4,10 +4,17 @@ var Schema = mongoose.Schema;
 
 var ProductInfoModelSchema = new Schema({
     id: {type: Number, required: true, unique:true },
-    product_id: {type: Number, required: true, unique:true},
-    size: {type: Number, require: true, max: 50},
-    Quantity: {type: Number, require: true, min: 0},
-    Color: {type: String, require: true}});
+    image: {type: String},
+    product: {type: Schema.ObjectId, ref: 'Product'},
+    size: {type: String,
+           enum: ['L', 'XL', 'M', 'S']},
+    quantity: {type: Number, require: true, min: 0},
+    color: {type: String, require: true}
+});
+
+ProductInfoModelSchema.virtual('url').get(function () {
+    return '/productInfo/' +this._id;
+});
 
 
-var ProductInfo = mongoose.model('ProductInfo', ProductInfoModelSchema);
+module.exports = mongoose.model('ProductInfo', ProductInfoModelSchema);

@@ -5,18 +5,19 @@ var Schema = mongoose.Schema;
 var ProductSchema = new Schema(
     {
         product_id: {type: Number, required: true, unique: true},
-        product_name: {type: String, required: true, max: 100},
-        product_company: {type: String, required: true, max: 100},
-        category: {type: String},
-        type: {
-            type: String,
-            enum: ['Women', 'Men', 'Kids', 'Babies']
-        },
+        product_name: {type: String, max: 100},
+        product_company: {type: Schema.ObjectId, ref:'Supplier', max: 100},
+        category: {type: Schema.ObjectId, ref:'Category'},
+        type: {type: Schema.ObjectId, ref: 'User_Object'},
         size_range: {type: String, max: 10},
         price: {type: Number, required: true},
         discount: {type: Boolean, required: true},
         discount_amount: {type: Number},
         total_quantity: {type: Number}
     });
+
+ProductSchema.virtual('url').get(function () {
+    return '/product/' + this._id;
+});
 
 module.exports = mongoose.model('Product', ProductSchema);
