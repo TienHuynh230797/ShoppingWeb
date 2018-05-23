@@ -19,19 +19,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
       <!--//fonts-->
-      <script type = "text/javascript">
-          function compute(login) {
-              var txtUsername = document.getElementById('username').value;
-              var txtPassword = document.getElementById('password'.value);
+     <script>
+          function myLoginFunction(){
+              let txtUsername = document.getElementById("id_username").value;
+              let txtPassword = document.getElementById("id_password").value;
+              var flag = false;
               {{#each customer_list}}
-                  if (this.position == "admin")
+                  if (txtUsername === String("{{this.username}}") && txtPassword === String("{{this.password}}"))
                   {
-                      if (this.username == txtUsername && this.password == txtPassword)
-                      {
-                          alert("Login to admin successful");
-                      }
+                      flag = true;
                   }
               {{/each}}
+              if (flag === true) {
+                  alert("Login successful!");
+              } else {
+                  alert("Login failed!");
+              }
+
           }
       </script>
   </head>
