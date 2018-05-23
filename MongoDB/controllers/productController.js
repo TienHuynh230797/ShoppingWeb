@@ -31,6 +31,25 @@ exports.index = function (req, res, next) {
     });
 };
 
+exports.layout = function (req, res, next) {
+    async.parallel({
+        list_categories: function (callback) {
+            Category.find().exec(callback);
+        },
+        list_customers: function (callback) {
+            Customer.find().exec(callback);
+        },
+    }, function (err, results) {
+        if (err) { return next(err);}
+        if(results.list_customers == null) {
+            var err = new Error('Customer || Category not found');
+            err.status = 404;
+            return next(err);
+        }
+        res.render('layout', {title:'Customer List', category_list: results.list_categories, customer_list: results.list_customers});
+    });
+};
+
 /*exports.index = function (req, res, next) {
     async.parallel({
         list_products: function (callback) {

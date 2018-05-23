@@ -21,6 +21,7 @@ var product_controller = require('../controllers/productController');
 
 //get catalog home page
 router.get('/', product_controller.index);
+router.get('/', product_controller.layout);
 
 router.get('/product/:id', product_controller.product_detail);
 
