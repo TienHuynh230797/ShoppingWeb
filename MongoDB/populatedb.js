@@ -8,7 +8,7 @@ var Category = require('./models/category');
 var User_Object = require('./models/user_object');
 
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://localhost:27017/shoppingDB';
+var mongoDB = 'mongodb://admin:admin@ds016298.mlab.com:16298/shoppingwebsitedb';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;

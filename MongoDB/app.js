@@ -12,7 +12,7 @@ var app = express();
 
 //Set up default mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://localhost:27017/shoppingDB';
+var mongoDB = 'mongodb://admin:admin@ds016298.mlab.com:16298/shoppingwebsitedb';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
