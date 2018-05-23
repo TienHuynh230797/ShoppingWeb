@@ -93,21 +93,6 @@ function productCreate(product_id, product_name, product_company, category, type
     });
 }
 
-/*function productCreate(product_id, product_name, product_company, category, type, size_range, price, discount, discount_amount, total_quantity) {
-    productDetail = {product_id: product_id, product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_amount: discount_amount, total_quantity: total_quantity};
-    var product = new Product(productDetail);
-    product.save(function (err) {
-        if (err) {
-            //cb(err, null);
-            return;
-        }
-        console.log('New product: ' + product);
-        products.push(product);
-       // cb(null, product);
-    });
-}*/
-
-
 function customers_productCreate(purchase_id, customer, product_id, quantity,price,  discount_value, dateofpurchase, cb) {
     customers_productDetail = {purchase_id: purchase_id, customer: customer, product_id: product_id, quantity: quantity, price: price,  discount_value: discount_value, dateofpurchase: dateofpurchase}
     var customers_product = new Customer_Product(customers_productDetail);
