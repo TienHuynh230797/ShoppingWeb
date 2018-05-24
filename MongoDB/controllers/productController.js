@@ -50,24 +50,6 @@ exports.layout = function (req, res, next) {
     });
 };
 
-/*exports.index = function (req, res, next) {
-    async.parallel({
-        list_products: function (callback) {
-            Product_Info.find().populate('product').exec(callback);
-        },
-        list_categories: function (callback) {
-            Category.find().exec(callback);
-        },
-    }, function (err, results) {
-        if (err) { return next(err);}
-        if(results.list_products == null) {
-            var err = new Error('Product || Category not found');
-            err.status = 404;
-            return next(err);
-        }
-        res.render('index', {title:'Product List', product_list: results.list_products, category_list: results.list_categories});
-    });
-};*/
 
 exports.product_detail = function (req, res, next) {
     async.parallel({
