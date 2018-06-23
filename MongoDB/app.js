@@ -22,6 +22,16 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 //app.listen(process.env.PORT || 3000);
+var Handlebars = require('hbs');
+Handlebars.registerHelper('times', function(n, block) {
+    var accum = '';
+    for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1.equals(arg2)) ? options.fn(this) : options.inverse(this);
+});
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -8,9 +8,13 @@
             <div class="top-nav">
                 <span class="menu"> </span>
                 <ul>
-                    <li><a href="/">Home </a></li>
-                    {{# each category_list}}
-                        <li><a href="{{this._id}}">{{this.name}}</a></li><!--men.html-->
+                    <li><a href="/">Home</a></li>
+                    {{#each type_list}}
+                        {{#ifEquals this._id ../typeCurrent._id}}
+                            <li class="active"><a href="/type/{{this._id}}">{{this.name}}</a></li><!--men.html-->
+                        {{else}}
+                            <li><a href="/type/{{this._id}}">{{this.name}}</a></li><!--men.html-->
+                        {{/ifEquals}}
                     {{/each}}
                 </ul>
                 <script>

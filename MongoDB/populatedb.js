@@ -222,6 +222,9 @@ function createProduct_Infos(cb) {
         function (callback) {
             product_infoCreate(6,'images/WhiteDress.jpg',products[5],'L',5,'White',callback);
         },
+        function (callback) {
+            product_infoCreate(7, 'images/NAYEON-SANTA.jpg', products[5], 'M', 5, 'Red', callback);
+        }
     ],cb);
 }
 
