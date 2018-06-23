@@ -5,6 +5,36 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!--header-->
+<div class="header">
+    <div class="container">
+        <div class="header-bottom-bottom">
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul>
+                    <li class="active"><a href="/">HOME </a></li>
+                    {{# each category_list}}
+                        <li><a href="categories/{{this._id}}">{{this.name}}</a></li><!--men.html-->
+                    {{/each}}
+                </ul>
+                <script>
+                    $("span.menu").click(function () {
+                        $(".top-nav ul").slideToggle(500, function () {
+                        });
+                    });
+                </script>
+                <div class="clearfix"></div>
+            </div>
+            <div class="search">
+                <form>
+                    <input type="text" value="Search" onfocus="this.value = '';"
+                           onblur="if (this.value === '') {this.value = '';}">
+                    <input type="submit" value="">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
 <!--content-->
 <div class="content">
     <div class="container">
@@ -21,7 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <span>40<label>%</label></span>
                         <small>off</small>
                     </div>
-                    <p  class="para-in">Some text regarding the featured product.</p>
+                    <p class="para-in">Some text regarding the featured product.</p>
                 </div>
                 <!---->
                 <div class="in-line">
@@ -32,13 +62,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="lady-in">
                         {{# each product_list}}
                             <div class="col-md-4 you-para">
-                                <a href="{{this.url}}"><img class="img-responsive pic-in" src="images/pi5.jpg" alt=" " ></a>
-                                <div class="you-in">
-                                    <span><label>{{this.discount_amount}}%</label></span>
-                                    <small>off</small>
-                                </div>
+                                <a href="{{this.url}}"><img class="img-responsive pic-in"
+                                                            src={{this.image}} alt="ERROR"></a>
+                                {{#if this.discount_amount}}
+                                    <div class="you-in">
+                                        <span><label>{{this.discount_amount}}%</label></span>
+                                        <small>off</small>
+                                    </div>
+                                {{/if}}
                                 <p>{{this.product_name}}</p>
-                                <span>${{this.price}}</span>  | <label class="cat-in"> </label> <a href="#">Add to Cart </a></span>
+                                <span>${{this.price}}</span> | <label class="cat-in"> </label> <a href="#">Add to
+                                Cart </a>
                             </div>
                         {{/each}}
                     </div>
@@ -51,17 +85,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 </div>
                 <div class="discount">
-                    <a href="#"><img class="img-responsive pic-in" src="images/p2.jpg" alt=" " ></a><!--single.html-->
+                    <a href="#"><img class="img-responsive pic-in" src="images/p2.jpg" alt=" "></a><!--single.html-->
                     <p class="no-more">Exclusive <b>discount</b> <span>Womens wear</span></p>
                     <a href="#" class="know-more">know more</a>
                 </div>
                 <div class="discount">
-                    <a href="#"><img class="img-responsive pic-in" src="images/p3.jpg" alt=" " ></a><!--single.html-->
+                    <a href="#"><img class="img-responsive pic-in" src="images/p3.jpg" alt=" "></a><!--single.html-->
                     <p class="no-more no-get">Get Exclusive <b>discount on</b> <span>Ladies wear</span></p>
                     <a href="#" class="know-more">know more</a>
                 </div>
                 <div class="twitter-in">
-                    <h5>TWITTER  UPDATES</h5>
+                    <h5>TWITTER UPDATES</h5>
                     <span class="twitter-ic">	</span>
                     <div class="up-date">
                         <p>@suniljoshi Looks like nice and dicent design</p>
@@ -74,10 +108,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <p class="ago">About 1 hour ago via twitterfeed</p>
                     </div>
                     <a href="#" class="tweets">More Tweets</a>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
         <!--
         <div class="lady-in-on">

@@ -65,7 +65,7 @@ function supplierCreate(company_id, company_name, address, telephone, email, cb)
 }
 
 function customerCreate(id_number, username, password, firstName, lastName, birthDay, address, telephone, email, position, cb) {
-    customerDetail = {id_number: id_number, username: username, password: password, firstName: firstName, lastName: lastName, birthDay: birthDay, address: address, telephone: telephone, email: email, position: position}
+    customerDetail = {id_number: id_number, username: username, password: password, firstName: firstName, lastName: lastName, birthDay: birthDay, address: address, telephone: telephone, email: email, position: position};
     var customer = new Customer(customerDetail);
     customer.save(function (err) {
         if (err) {
@@ -79,8 +79,8 @@ function customerCreate(id_number, username, password, firstName, lastName, birt
 }
 
 
-function productCreate(product_id, product_name, product_company, category, type, size_range, price, discount, discount_amount, total_quantity, cb) {
-    productDetail = {product_id: product_id, product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_amount: discount_amount, total_quantity: total_quantity}
+function productCreate(product_id, product_name, product_company, category, type, size_range, price, discount, discount_amount, total_quantity, image, cb) {
+    productDetail = {product_id: product_id, product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_amount: discount_amount, total_quantity: total_quantity, image: image};
     var product = new Product(productDetail);
     product.save(function (err) {
         if (err) {
@@ -94,7 +94,7 @@ function productCreate(product_id, product_name, product_company, category, type
 }
 
 function customers_productCreate(purchase_id, customer, product_id, quantity,price,  discount_value, dateofpurchase, cb) {
-    customers_productDetail = {purchase_id: purchase_id, customer: customer, product_id: product_id, quantity: quantity, price: price,  discount_value: discount_value, dateofpurchase: dateofpurchase}
+    customers_productDetail = {purchase_id: purchase_id, customer: customer, product_id: product_id, quantity: quantity, price: price,  discount_value: discount_value, dateofpurchase: dateofpurchase};
     var customers_product = new Customer_Product(customers_productDetail);
     customers_product.save(function (err) {
         if (err) {
@@ -182,22 +182,22 @@ function createUser_Objects(cb) {
 function createProducts(cb) {
     async.parallel([
         function (callback) {
-            productCreate(1,'Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,true,10,5,callback);
+            productCreate(1,'Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,true,10,5,'images/BlueTShirt.jpg',callback);
          },
         function (callback) {
-            productCreate(2,'Black Jean',suppliers[0],categories[0],user_objects[0],5,2000000,true,0,2,callback);
+            productCreate(2,'Black Jean',suppliers[0],categories[0],user_objects[0],5,2000000,true,0,2,'images/BlackJean.jpg',callback);
         },
         function (callback) {
-            productCreate(3,'Red T-Shirt',suppliers[0],categories[1],user_objects[1],6,2500000,true,10,3,callback);
+            productCreate(3,'Red T-Shirt',suppliers[0],categories[1],user_objects[1],6,2500000,true,10,3,'images/RedTShirt.jpg',callback);
         },
         function (callback) {
-            productCreate(4,'Black Dress',suppliers[0],categories[2],user_objects[1],7,3000000,true,15,4,callback);
+            productCreate(4,'Black Dress',suppliers[0],categories[2],user_objects[1],7,3000000,true,15,4,'images/BlackDress.jpg',callback);
         },
         function (callback) {
-            productCreate(5,'Chelsea Kid Clothes',suppliers[0],categories[3],user_objects[2],8,1000000,true,10,5,callback);
+            productCreate(5,'Chelsea Kid Clothes',suppliers[0],categories[3],user_objects[2],8,1000000,true,10,5,'images/ChelseaKidClothes.jpg',callback);
         },
         function (callback) {
-            productCreate(6,'White Dress',suppliers[0],categories[2],user_objects[1],9,2200000,true,15,6,callback);
+            productCreate(6,'White Dress',suppliers[0],categories[2],user_objects[1],9,2200000,true,15,6,'images/WhiteDress.jpg',callback);
         },
     ],cb);
 }

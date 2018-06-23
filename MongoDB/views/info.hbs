@@ -4,13 +4,12 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE html>
-<html>
 <head>
+    <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/etalage.css'>
     <script src='/javascripts/jquery.etalage.min.js'></script>
     <script>
-        jQuery(document).ready(function($){
+        jQuery(document).ready(function ($) {
 
             $('#etalage').etalage({
                 thumb_image_width: 300,
@@ -28,13 +27,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- the jScrollPane script -->
     <script type="text/javascript" src="/javascripts/jquery.jscrollpane.min.js"></script>
     <script type="text/javascript" id="sourcecode">
-        $(function()
-        {
+        $(function () {
             $('.scroll-pane').jScrollPane();
         });
     </script>
 </head>
 <body>
+<div class="header">
+    <div class="container">
+        <div class="header-bottom-bottom">
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul>
+                    <li><a href="/">HOME </a></li>
+                    {{# each category_list}}
+                        <li><a href="/categories/{{this._id}}">{{this.name}}</a></li><!--men.html-->
+                    {{/each}}
+                </ul>
+                <script>
+                    $("span.menu").click(function () {
+                        $(".top-nav ul").slideToggle(500, function () {
+                        });
+                    });
+                </script>
+                <div class="clearfix"></div>
+            </div>
+            <div class="search">
+                <form>
+                    <input type="text" value="Search" onfocus="this.value = '';"
+                           onblur="if (this.value === '') {this.value = '';}">
+                    <input type="submit" value="">
+                </form>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
 <div class="content">
     <div class="container">
         <div class="single">
@@ -45,14 +73,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             {{# each productInfo}}
                                 <li>
                                     <a href="#"><!--optionallink.html-->
-                                        <img class="etalage_thumb_image img-responsive" src="/{{this.image}}" alt="" >
-                                        <img class="etalage_source_image img-responsive" src="/{{this.image}}" alt="" >
+                                        <img class="etalage_thumb_image img-responsive" src="/{{this.image}}" alt="">
+                                        <img class="etalage_source_image img-responsive" src="/{{this.image}}" alt="">
                                     </a>
                                 </li>
                             {{/each}}
 
                         </ul>
-                        <div class="clearfix"> </div>
+                        <div class="clearfix"></div>
                     </div>
                     <!---->
                     <div class="span1_of_1_des">
@@ -259,11 +287,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </section>
                 </div>
                </div>-->
-                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
     <!---->
 </div>
 </body>
-</html>
