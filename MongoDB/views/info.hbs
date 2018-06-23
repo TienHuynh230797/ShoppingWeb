@@ -53,68 +53,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!--header-->
-<div class="header">
-    <div class="header-top">
-        <div class="container">
-            <div class="header-grid">
-                <ul>
-                    <li><a href="#" class="scroll">Articles</a></li><!--articles.html-->
-                    <li><a href="#" class="scroll">Contact  </a></li><!--contact.html-->
-                    <li><a href="#" class="scroll">Terms</a></li>
-                </ul>
-            </div>
-            <div class="header-grid-right">
-                <a href="#" class="sign-in">Sign In</a>
-                <form>
-                    <input type="text" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                    <input type="text" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                    <input type="submit" value="Go" >
-                </form>
-                <label>|</label>
-                <a href="/info" class="sign-up">Sign Up</a>
-            </div>
-            <div class="clearfix"> </div>
-
-        </div>
-    </div>
-    <div class="container">
-        <div class="header-bottom">
-            <div class="logo">
-                <a href="/"><img src="/images/logo.png" alt=" " ></a>
-            </div>
-            <div class="ad-right">
-                <img src="/images/ad.png" alt=" " >
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-        <div class="header-bottom-bottom">
-            <div class="top-nav">
-                <span class="menu"> </span>
-                <ul>
-                    <li ><a href="/">HOME </a></li>
-                    {{# each category_list}}
-                         <li><a href="#" >{{this.name}}</a></li>
-                    {{/each}}
-                    <!--<li class="active"><a href="#" >INFO</a></li>-->
-                </ul>
-                <script>
-                    $("span.menu").click(function(){
-                        $(".top-nav ul").slideToggle(500, function(){
-                        });
-                    });
-                </script>
-                <div class="clearfix"> </div>
-            </div>
-            <div class="search">
-                <form>
-                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
-                    <input type="submit"  value="">
-                </form>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-</div>
 <!--content-->
 
 <div class="content">
