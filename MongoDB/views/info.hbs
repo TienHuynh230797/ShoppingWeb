@@ -10,7 +10,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src='/javascripts/jquery.etalage.min.js'></script>
     <script>
         jQuery(document).ready(function ($) {
-
             $('#etalage').etalage({
                 thumb_image_width: 300,
                 thumb_image_height: 400,
@@ -39,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="top-nav">
                 <span class="menu"> </span>
                 <ul>
-                    <li><a href="/">HOME </a></li>
+                    <li><a href="/">Home </a></li>
                     {{# each category_list}}
                         <li><a href="/categories/{{this._id}}">{{this.name}}</a></li><!--men.html-->
                     {{/each}}

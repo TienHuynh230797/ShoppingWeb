@@ -1,10 +1,14 @@
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
 <div class="header">
     <div class="container">
         <div class="header-bottom-bottom">
             <div class="top-nav">
                 <span class="menu"> </span>
                 <ul>
-                    <li><a href="/">HOME </a></li>
+                    <li><a href="/">Home </a></li>
                     {{# each category_list}}
                         <li><a href="{{this._id}}">{{this.name}}</a></li><!--men.html-->
                     {{/each}}
@@ -36,7 +40,8 @@
                     <div class="lady-in">
                         {{# each product_list}}
                             <div class="col-md-4 you-para">
-                                <a href="{{this.url}}"><img class="img-responsive pic-in" src="../{{this.image}}" alt="ERROR" ></a>
+                                <a href="{{this.url}}"><img class="img-responsive pic-in" src="../{{this.image}}"
+                                                            alt="ERROR"></a>
                                 {{#if this.discount_amount}}
                                     <div class="you-in">
                                         <span><label>{{this.discount_amount}}%</label></span>
@@ -44,7 +49,8 @@
                                     </div>
                                 {{/if}}
                                 <p>{{this.product_name}}</p>
-                                <span>${{this.price}}</span>  | <label class="cat-in"> </label> <a href="#">Add to Cart </a>
+                                <span>${{this.price}}</span> | <label class="cat-in"> </label> <a href="#">Add to
+                                Cart </a>
                             </div>
                         {{/each}}
                     </div>
@@ -57,17 +63,17 @@
                     </div>
                 </div>
                 <div class="discount">
-                    <a href="#"><img class="img-responsive pic-in" src="../images/p2.jpg" alt=" " ></a><!--single.html-->
+                    <a href="#"><img class="img-responsive pic-in" src="../images/p2.jpg" alt=" "></a><!--single.html-->
                     <p class="no-more">Exclusive <b>discount</b> <span>Womens wear</span></p>
                     <a href="#" class="know-more">know more</a>
                 </div>
                 <div class="discount">
-                    <a href="#"><img class="img-responsive pic-in" src="../images/p3.jpg" alt=" " ></a><!--single.html-->
+                    <a href="#"><img class="img-responsive pic-in" src="../images/p3.jpg" alt=" "></a><!--single.html-->
                     <p class="no-more no-get">Get Exclusive <b>discount on</b> <span>Ladies wear</span></p>
                     <a href="#" class="know-more">know more</a>
                 </div>
                 <div class="twitter-in">
-                    <h5>TWITTER  UPDATES</h5>
+                    <h5>TWITTER UPDATES</h5>
                     <span class="twitter-ic">	</span>
                     <div class="up-date">
                         <p>@suniljoshi Looks like nice and dicent design</p>
@@ -80,10 +86,11 @@
                         <p class="ago">About 1 hour ago via twitterfeed</p>
                     </div>
                     <a href="#" class="tweets">More Tweets</a>
-                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="clearfix"> </div>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
+</body>

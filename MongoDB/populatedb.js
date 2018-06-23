@@ -123,7 +123,7 @@ function product_infoCreate(id, image, product, size, quantity, color, cb) {
 
 
 function createCustomers(cb) {
-    async.parallel([
+    async.series([
         function (callback) {
             customerCreate(1,'admin','admin','Huynh','Tien','1997-07-23','123 NVC','0123456789','htht@gmail.com', 'admin', callback);
         },
@@ -137,7 +137,7 @@ function createCustomers(cb) {
 }
 
 function createSuppliers(cb) {
-    async.parallel([
+    async.series([
         function (callback) {
             supplierCreate(1,'Zalo','District 5','0123456789','zalo@gmail.com',callback);
         }
@@ -145,7 +145,7 @@ function createSuppliers(cb) {
 }
 
 function createCategories(cb) {
-    async.parallel([
+    async.series([
         function (callback) {
             categoryCreate('Jean', callback);
          },
@@ -162,7 +162,7 @@ function createCategories(cb) {
 }
 
 function createUser_Objects(cb) {
-    async.parallel([
+    async.series([
         function (callback) {
             user_objectCreate('Men', callback);
         },
@@ -180,7 +180,7 @@ function createUser_Objects(cb) {
 
 
 function createProducts(cb) {
-    async.parallel([
+    async.series([
         function (callback) {
             productCreate(1,'Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,true,10,5,'images/BlueTShirt.jpg',callback);
          },
@@ -203,7 +203,7 @@ function createProducts(cb) {
 }
 
 function createProduct_Infos(cb) {
-    async.parallel([
+    async.series([
         function (callback) {
             product_infoCreate(1,'images/BlueTShirt.jpg',products[0],'L',5,'Blue',callback);
         },
@@ -227,7 +227,7 @@ function createProduct_Infos(cb) {
 
 
 function createCustomers_products(cb) {
-    async.parallel([function (callback) {
+    async.series([function (callback) {
         customers_productCreate(1,customers[0],products[0],1,100000,100000,'2018-02-14',callback);}],cb);
 }
 
