@@ -76,7 +76,7 @@ a.sign-in{
 	padding: 4px 0;
 	font-weight: 600;
 }
-.header-grid-right input[type="text"],.header-grid-right input[type="submit"]{
+.header-grid-right input[type="text"],.header-grid-right input[type="submit"], .header-grid-right input[type="password"] {
 	outline: none;
 	border: none;
 	background: #4a4a4a;
@@ -1949,7 +1949,7 @@ width: 40%;
 .header-top{
 	text-align:center;
 }
-.header-grid-right input[type="text"] {
+.header-grid-right input[type="text"], .header-grid-right input[type="password"] {
 	width: 26%;
 	margin-right: 8px;
 }
