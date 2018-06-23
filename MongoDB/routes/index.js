@@ -19,10 +19,17 @@ var router = express.Router();
 
 var product_controller = require('../controllers/productController');
 var type_controller = require('../controllers/typeController');
+var auth_controller = require("../controllers/AuthController");
 
 //get catalog home page
 router.get('/', product_controller.index);
 router.get('/', product_controller.layout);
+
+// route to login page
+//router.get('/login', auth_controller.login);
+
+// route for login action
+//router.post('/login', auth_controller.doLogin);
 
 router.get('/product/:id', product_controller.product_detail);
 router.get('/type/:id', type_controller.type);

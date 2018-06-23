@@ -20,25 +20,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
       <!--//fonts-->
-     <script>
-          function myLoginFunction(){
-              let txtUsername = document.getElementById("id_username").value;
-              let txtPassword = document.getElementById("id_password").value;
-              var flag = false;
-              {{#each customer_list}}
-                  if (txtUsername === String("{{this.username}}") && txtPassword === String("{{this.password}}"))
-                  {
-                      flag = true;
-                  }
-              {{/each}}
-              if (flag === true) {
-                  alert("Login successful!");
-              } else {
-                  alert("Login failed!");
-              }
-
-          }
-      </script>
   </head>
   <body>
   <!--header-->
@@ -54,10 +35,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
               <div class="header-grid-right">
                   <a href="#" class="sign-in">Sign In</a>
-                    <form>
-                    <input type="text" id="id_username" value="Username" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                    <input type="password" id="id_password" value="Password" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-                    <input type="submit" value="Go" onclick="myLoginFunction()" >
+                    <form action = "/login" method="post">
+                        <input type="text" name="username" value="Username">
+                        <input type="password" name="password" value="Password">
+                        <input type="submit" value="Go" >
                     </form>
                   <label>|</label>
                   <a href="#" class="sign-up">Sign Up</a><!--signup.html-->
