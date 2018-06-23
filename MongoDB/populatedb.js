@@ -205,7 +205,6 @@ function createProducts(cb) {
 function createProduct_Infos(cb) {
     async.parallel([
         function (callback) {
-
             product_infoCreate(1,'images/BlueTShirt.jpg',products[0],'L',5,'Blue',callback);
         },
         function (callback) {

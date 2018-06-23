@@ -13,7 +13,8 @@ var ProductSchema = new Schema(
         price: {type: Number, required: true},
         discount: {type: Boolean, required: true},
         discount_amount: {type: Number},
-        total_quantity: {type: Number}
+        total_quantity: {type: Number},
+        image: {type: String}
     });
 
 ProductSchema.virtual('url').get(function () {
