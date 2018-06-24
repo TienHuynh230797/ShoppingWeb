@@ -6,6 +6,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <head>
     <title>{{title}}</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/etalage.css'>
     <script src='/javascripts/jquery.etalage.min.js'></script>
     <script>
@@ -93,7 +96,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             {{#if productCurrent.discount}}
                                 <h4 style="text-decoration-line: line-through">{{formatCurrency productCurrent.price}}₫</h4>
                             {{/if}}
-                            <h5>{{formatCurrency productCurrent.discount_price}}₫<a href="#">click for offer</a></h5>
+                            <h5>{{formatCurrency productCurrent.discount_price}}₫</h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
                                 <ul>
@@ -129,7 +132,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <div class="form-in">
                                     <a href="#">Add To Cart</a>
                                 </div>
-                                <span class="span_right"><a href="#">login to save in wishlist </a></span>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="share-desc">
@@ -236,7 +238,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             });
                         });
                     </script>
-
                 </div>
             </div>
 
@@ -248,10 +249,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <div class="col col-4">
                                 {{#each category_list}}
                                     {{#ifEquals this._id ../productCurrent.category}}
-                                        <label class="checkbox"><input type="checkbox" name="checkbox"
+                                        <label class="checkbox"><input type="checkbox" disabled name="checkbox"
                                                                        checked=""><i></i>{{this.name}}</label>
                                     {{else}}
-                                        <label class="checkbox"><input type="checkbox"
+                                        <label class="checkbox"><input type="checkbox" disabled
                                                                        name="checkbox"><i></i>{{this.name}}
                                         </label>
                                     {{/ifEquals}}
@@ -262,6 +263,71 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
             <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="page-header">
+                    <h1><small class="pull-right">45 comments</small> Comments </h1>
+                </div>
+                <div class="comments-list">
+                    <div class="media">
+                        <p class="pull-right"><small>5 days ago</small></p>
+                        <div class="media-body">
+
+                            <h4 class="media-heading user_name">Baltej Singh</h4>
+                            Wow! this is really great.
+
+                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <p class="pull-right"><small>5 days ago</small></p>
+                        <div class="media-body">
+
+                            <h4 class="media-heading user_name">Baltej Singh</h4>
+                            Wow! this is really great.
+
+                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <p class="pull-right"><small>5 days ago</small></p>
+                        <div class="media-body">
+
+                            <h4 class="media-heading user_name">Baltej Singh</h4>
+                            Wow! this is really great.
+
+                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                    </div>
+                    <div class="media">
+                        <p class="pull-right"><small>5 days ago</small></p>
+                        <div class="media-body">
+
+                            <h4 class="media-heading user_name">Baltej Singh</h4>
+                            Wow! this is really great.
+
+                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="comment">
+            <form>
+                <label for="fname">Full Name</label>
+                <br>
+                <input type="text" id="fname" name="fullname" placeholder="Your name..">
+                <br>
+                <label for="subject">Subject</label>
+                <br>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
         </div>
         <div class="lady-in-on">
             <div class="buy-an">
@@ -274,7 +340,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li><a href="{{this.url}}"><img class="img-responsive women" src="{{this.image}}" alt=""></a>
                             <div class="hide-in">
                                 <p>{{this.product_name}}</p>
-                                <span>{{formatCurrency this.price}}₫  |  <a href="{{this.url}}">Buy Now </a></span>
+                                <span>{{formatCurrency this.discount_price}}₫  |  <a href="{{this.url}}">Buy Now </a></span>
                             </div>
                         </li>
                     {{/ifEquals}}
