@@ -90,7 +90,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="desc1">
                             <h3>{{productCurrent.product_name}} </h3>
                             <!--<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>-->
-                            <h4 style="text-decoration-line: line-through">{{formatCurrency productCurrent.price}}₫</h4>
+                            {{#if productCurrent.discount}}
+                                <h4 style="text-decoration-line: line-through">{{formatCurrency productCurrent.price}}₫</h4>
+                            {{/if}}
                             <h5>{{formatCurrency productCurrent.discount_price}}₫<a href="#">click for offer</a></h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
