@@ -11,8 +11,8 @@ var ProductSchema = new Schema(
         type: {type: Schema.ObjectId, ref: 'User_Object'},
         size_range: {type: String, max: 10},
         price: {type: Number, required: true},
-        discount: {type: Boolean, required: true},
-        discount_amount: {type: Number},
+        discount: {type: Number, required: true},
+        discount_price: {type: Number},
         total_quantity: {type: Number},
         image: {type: String}
     });

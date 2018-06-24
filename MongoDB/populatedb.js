@@ -79,8 +79,8 @@ function customerCreate(id_number, username, password, firstName, lastName, birt
 }
 
 
-function productCreate(product_id, product_name, product_company, category, type, size_range, price, discount, discount_amount, total_quantity, image, cb) {
-    productDetail = {product_id: product_id, product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_amount: discount_amount, total_quantity: total_quantity, image: image};
+function productCreate(product_id, product_name, product_company, category, type, size_range, price, discount, discount_price, total_quantity, image, cb) {
+    productDetail = {product_id: product_id, product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_price: discount_price, total_quantity: total_quantity, image: image};
     var product = new Product(productDetail);
     product.save(function (err) {
         if (err) {
@@ -182,22 +182,22 @@ function createUser_Objects(cb) {
 function createProducts(cb) {
     async.series([
         function (callback) {
-            productCreate(1,'Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,true,10,5,'images/BlueTShirt.jpg',callback);
+            productCreate(1,'Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,10,900000,5,'/images/BlueTShirt.jpg',callback);
          },
         function (callback) {
-            productCreate(2,'Black Jean',suppliers[0],categories[0],user_objects[0],5,2000000,true,0,2,'images/BlackJean.jpg',callback);
+            productCreate(2,'Black Jean',suppliers[0],categories[0],user_objects[0],5,2000000,0,2000000,2,'/images/BlackJean.jpg',callback);
         },
         function (callback) {
-            productCreate(3,'Red T-Shirt',suppliers[0],categories[1],user_objects[1],6,2500000,true,10,3,'images/RedTShirt.jpg',callback);
+            productCreate(3,'Red T-Shirt',suppliers[0],categories[1],user_objects[1],6,2500000,10,2250000,3,'/images/RedTShirt.jpg',callback);
         },
         function (callback) {
-            productCreate(4,'Black Dress',suppliers[0],categories[2],user_objects[1],7,3000000,true,15,4,'images/BlackDress.jpg',callback);
+            productCreate(4,'Black Dress',suppliers[0],categories[2],user_objects[1],7,3000000,15,2550000,4,'/images/BlackDress.jpg',callback);
         },
         function (callback) {
-            productCreate(5,'Chelsea Kid Clothes',suppliers[0],categories[3],user_objects[2],8,1000000,true,10,5,'images/ChelseaKidClothes.jpg',callback);
+            productCreate(5,'Chelsea Kid Clothes',suppliers[0],categories[3],user_objects[2],8,1000000,10,900000,5,'/images/ChelseaKidClothes.jpg',callback);
         },
         function (callback) {
-            productCreate(6,'White Dress',suppliers[0],categories[2],user_objects[1],9,2200000,true,15,6,'images/WhiteDress.jpg',callback);
+            productCreate(6,'White Dress',suppliers[0],categories[2],user_objects[1],9,2200000,15,1870000,6,'/images/WhiteDress.jpg',callback);
         },
     ],cb);
 }
@@ -205,25 +205,25 @@ function createProducts(cb) {
 function createProduct_Infos(cb) {
     async.series([
         function (callback) {
-            product_infoCreate(1,'images/BlueTShirt.jpg',products[0],'L',5,'Blue',callback);
+            product_infoCreate(1,'/images/BlueTShirt.jpg',products[0],'L',5,'Blue',callback);
         },
         function (callback) {
-            product_infoCreate(2,'images/BlackJean.jpg',products[1],'XL',5,'Black',callback);
+            product_infoCreate(2,'/images/BlackJean.jpg',products[1],'XL',5,'Black',callback);
         },
         function (callback) {
-            product_infoCreate(3,'images/RedTShirt.jpg',products[2],'L',5,'Red',callback);
+            product_infoCreate(3,'/images/RedTShirt.jpg',products[2],'L',5,'Red',callback);
         },
         function (callback) {
-            product_infoCreate(4,'images/BlackDress.jpg',products[3],'L',5,'Black',callback);
+            product_infoCreate(4,'/images/BlackDress.jpg',products[3],'L',5,'Black',callback);
         },
         function (callback) {
-            product_infoCreate(5,'images/ChelseaKidClothes.jpg',products[4],'M',5,'Blue',callback);
+            product_infoCreate(5,'/images/ChelseaKidClothes.jpg',products[4],'M',5,'Blue',callback);
         },
         function (callback) {
-            product_infoCreate(6,'images/WhiteDress.jpg',products[5],'L',5,'White',callback);
+            product_infoCreate(6,'/images/WhiteDress.jpg',products[5],'L',5,'White',callback);
         },
         function (callback) {
-            product_infoCreate(7, 'images/NAYEON-SANTA.jpg', products[5], 'M', 5, 'Red', callback);
+            product_infoCreate(7, '/images/NAYEON-SANTA.jpg', products[5], 'M', 5, 'Red', callback);
         }
     ],cb);
 }

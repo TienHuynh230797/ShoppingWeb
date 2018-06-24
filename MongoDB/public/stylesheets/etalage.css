@@ -55,8 +55,8 @@
 /* Icon that will apear at the left bottom of the large thumbnail (optional): */
 #etalage .etalage_icon{
 	background: url(../images/zoom.png) no-repeat rgba(184, 183, 181, 0.32);
-	width: 104px;
-	height: 104px;
+	width: 25px;
+	height: 25px;
 }
 
 /* Hint that will apear at the top right of the large thumbnail (optional): */

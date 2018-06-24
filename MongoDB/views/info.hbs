@@ -76,8 +76,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             {{# each productInfo}}
                                 <li>
                                     <a href="#"><!--optionallink.html-->
-                                        <img class="etalage_thumb_image img-responsive" src="/{{this.image}}" alt="">
-                                        <img class="etalage_source_image img-responsive" src="/{{this.image}}" alt="">
+                                        <img class="etalage_thumb_image img-responsive" src="{{this.image}}" alt="">
+                                        <img class="etalage_source_image img-responsive" src="{{this.image}}" alt="">
                                     </a>
                                 </li>
                             {{/each}}
@@ -90,7 +90,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="desc1">
                             <h3>{{productCurrent.product_name}} </h3>
                             <!--<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>-->
-                            <h5>{{formatCurrency productCurrent.price}}₫<a href="#">click for offer</a></h5>
+                            <h4 style="text-decoration-line: line-through">{{formatCurrency productCurrent.price}}₫</h4>
+                            <h5>{{formatCurrency productCurrent.discount_price}}₫<a href="#">click for offer</a></h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
                                 <ul>
@@ -244,7 +245,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
                                 {{#each category_list}}
-
                                     {{#ifEquals this._id ../productCurrent.category}}
                                         <label class="checkbox"><input type="checkbox" name="checkbox"
                                                                        checked=""><i></i>{{this.name}}</label>
@@ -260,6 +260,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
             <div class="clearfix"></div>
+        </div>
+        <div class="lady-in-on">
+            <div class="buy-an">
+                <h3>OTHER PRODUCTS</h3>
+                <p>Check our all latest products in this section.</p>
+            </div>
+            <ul id="flexiselDemo1">
+                {{#each product_list}}
+                    {{#ifEquals this.category ../productCurrent.category}}
+                        <li><a href="{{this.url}}"><img class="img-responsive women" src="{{this.image}}" alt=""></a>
+                            <div class="hide-in">
+                                <p>{{this.product_name}}</p>
+                                <span>{{formatCurrency this.price}}₫  |  <a href="{{this.url}}">Buy Now </a></span>
+                            </div>
+                        </li>
+                    {{/ifEquals}}
+                {{/each}}
+            </ul>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    $("#flexiselDemo1").flexisel({
+                        visibleItems: 4,
+                        animationSpeed: 1000,
+                        autoPlay: true,
+                        autoPlaySpeed: 3000,
+                        pauseOnHover: true,
+                        enableResponsiveBreakpoints: true,
+                        responsiveBreakpoints: {
+                            portrait: {
+                                changePoint: 480,
+                                visibleItems: 1
+                            },
+                            landscape: {
+                                changePoint: 640,
+                                visibleItems: 2
+                            },
+                            tablet: {
+                                changePoint: 768,
+                                visibleItems: 3
+                            }
+                        }
+                    });
+
+                });
+            </script>
+            <script type="text/javascript" src="/javascripts/jquery.flexisel.js"></script>
         </div>
     </div>
 </div>

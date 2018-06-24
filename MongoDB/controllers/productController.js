@@ -34,8 +34,8 @@ exports.index = function (req, res, next) {
 
 exports.layout = function (req, res, next) {
     async.parallel({
-        list_categories: function (callback) {
-            Category.find().exec(callback);
+        list_type: function (callback) {
+            Type.find().exec(callback);
         },
         list_customers: function (callback) {
             Customer.find().exec(callback);
@@ -51,7 +51,7 @@ exports.layout = function (req, res, next) {
         }
         res.render('layout', {
             title: 'Home',
-            category_list: results.list_categories,
+            type_list: results.list_type,
             customer_list: results.list_customers
         });
     });
@@ -71,6 +71,9 @@ exports.product_detail = function (req, res, next) {
         },
         list_type: function (callback) {
             Type.find().exec(callback);
+        },
+        list_product: function (callback) {
+            Product.find().exec(callback);
         }
     }, function (err, results) {
         if (err) {
@@ -81,7 +84,8 @@ exports.product_detail = function (req, res, next) {
             productCurrent: results.product,
             type_list: results.list_type,
             productInfo: results.product_info,
-            category_list: results.list_categories
+            category_list: results.list_categories,
+            product_list: results.list_product
         });
     });
 };
