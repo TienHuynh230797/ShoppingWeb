@@ -29,7 +29,10 @@ router.get('/', product_controller.layout);
 //router.get('/login', auth_controller.login);
 
 // route for login action
-//router.post('/login', auth_controller.doLogin);
+router.post('/login', auth_controller.doLogin);
+router.get('/loginOK',auth_controller.loginOK);
+router.get('/signup', auth_controller.signup);
+router.post('/signup', auth_controller.doSignup);
 
 router.get('/product/:id', product_controller.product_detail);
 router.get('/type/:id', type_controller.type);

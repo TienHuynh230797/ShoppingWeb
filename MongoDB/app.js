@@ -60,18 +60,10 @@ app.use('/', indexRouter);
 //app.use('/catalog', catalogRouter);
 
 // passport configuration
-/*var User = require('./models/User');
+var User = require('./models/User');
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(function(user, done) {
-    done(null, user.username);
-});
-passport.deserializeUser(function(username, done) {
-    User.find({'username': username}).then(function (user) {
-        done(null, user);
-    }).catch(function (err) {
-        console.log(err);
-    })
-});*/
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

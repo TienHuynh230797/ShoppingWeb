@@ -8,22 +8,36 @@ userController.home = function(req, res) {
     res.render('layout', { user : req.user });
 };
 
+// Go to loginOK page
+userController.loginOK = function(req, res) {
+    res.render('loginOK');
+};
+
 // Go to registration page
-userController.register = function(req, res) {
-    res.render('register');
+userController.signup = function(req, res) {
+    res.render('signup');
 };
 
 // Post registration
-userController.doRegister = function(req, res) {
-    User.register(new User({ username : req.body.username, name: req.body.name }), req.body.password, function(err, user) {
-        if (err) {
-            return res.render('register', { user : user });
-        }
+userController.doSignup= function(req, res) {
+    if (req.body.username && req.body.name && req.body.password && req.body.passwordConfirm)
+    {
+        User.register(new User({ username : req.body.username, name: req.body.name}), req.body.password, function(err, user) {
+            if (err) {
+                return res.render('index', { user : user });
+            }
 
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            passport.authenticate('local')(req, res, function () {
+                res.redirect('/loginOK');
+            });
         });
-    });
+    }
+    else {
+        //return res.render('signup', req.flash('signupMessage', 'Bạn phải điền đầy đủ thông tin'));
+        return res.render('signup');
+    }
+
+
 };
 
 // Go to login page
@@ -33,16 +47,16 @@ userController.doRegister = function(req, res) {
 
 // Post login
 userController.doLogin = function(req, res) {
-    passport.serializeUser(function(user, done) {
-        done(null, user.username);
+    User.findOne({'username': req.body.username}, function (err, user) {
+        if (err)
+            return res.render('index', {user: user});
+        if (!user || !user.validPassword(req.body.password))
+            return res.redirect('loginOK');
     });
-    passport.deserializeUser(function(username, done) {
-        User.find({'username': username}).then(function (user) {
-            done(null, user);
-        }).catch(function (err) {
-            console.log(err);
-        })
-    });
+
+    passport.authenticate('local')(req, res, function () {
+        res.redirect('/loginOK');
+        });
 };
 
 // logout
