@@ -36,6 +36,12 @@ Handlebars.registerHelper('times', function(n, block) {
 Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
     return (arg1.equals(arg2)) ? options.fn(this) : options.inverse(this);
 });
+Handlebars.registerHelper('ifValue', function (arg1 , arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+Handlebars.registerHelper('ifNotValue', function (arg1 , arg2, options) {
+    return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+});
 Handlebars.registerHelper('formatCurrency', function(value) {
     return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 });

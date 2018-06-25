@@ -15,26 +15,49 @@ userController.loginOK = function(req, res) {
 
 // Go to registration page
 userController.signup = function(req, res) {
-    res.render('signup');
+    res.render('signup', {
+        title: "Sign up"
+    });
 };
 
 // Post registration
 userController.doSignup= function(req, res) {
     if (req.body.username && req.body.name && req.body.password && req.body.passwordConfirm)
     {
+        User.findOne({'username': req.body.username}, function (err, user) {
+            if (user)
+                return res.render('signup', {
+                    mess: "1"       //Đã tồn tại user
+                })
+        })
+        if (req.body.password != req.body.passwordConfirm)
+        {
+            return res.render('signup', {
+                mess: "2"       //Mật khẩu nhập lại không khớp
+            })
+        }
         User.register(new User({ username : req.body.username, name: req.body.name}), req.body.password, function(err, user) {
             if (err) {
-                return res.render('index', { user : user });
+                return res.render('signup', {
+                    user : user,
+                    mess : "3"    //Error
+                });
             }
 
             passport.authenticate('local')(req, res, function () {
-                res.redirect('/loginOK');
+                res.redirect('/');
+                /*res.render('index', {
+                    mess: "4"     //Login OK
+                })*/
+
             });
         });
     }
     else {
-        //return res.render('signup', req.flash('signupMessage', 'Bạn phải điền đầy đủ thông tin'));
-        return res.render('signup');
+        return res.render('signup', {
+            title: "Sign up",
+            mess: "5"     //Chưa điền đầy đủ thông tin
+        });
     }
 
 
