@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html>
+<head>
+    <title>{{title}}</title>
+</head>
 <body>
 <div class="container">
     <div class="col-sm-6 col-sm-offset-3">
         <h1><span class="fa fa-sign-in"></span> Sign up</h1>
         <!-- hiển thị mọi tin nhắn được trả lại từ server cho việc đăng ký -->
-        <!--<% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div>
-        <% } %>-->
+        {{#ifValue "5" mess}}
+            <script>
+                alert("Bạn phải điền đầy đủ thông tin");
+            </script>
+        {{/ifValue}}
+        {{#ifValue "1" mess}}
+            <script>
+                alert("Nguời dùng đã tồn tại");
+            </script>
+        {{/ifValue}}
+        {{#ifValue "2" mess}}
+            <script>
+                alert("Mật khẩu nhập lại không khớp");
+            </script>
+        {{/ifValue}}
         <!-- LOGIN FORM -->
         <form action="/signup" method="post">
             <div class="form-group">
