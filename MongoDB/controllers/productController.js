@@ -23,12 +23,26 @@ exports.index = function (req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render('index', {
-            title: 'Home',
-            product_list: results.list_products,
-            type_list: results.list_type,
-            customer_list: results.list_customers
-        });
+        //Test user login
+        if (req.user)
+        {
+            res.render('index', {
+                title: 'Home',
+                product_list: results.list_products,
+                type_list: results.list_type,
+                customer_list: results.list_customers,
+                user: user,
+                mess: "10"
+            });
+        } else {
+            res.render('index', {
+                title: 'Home',
+                product_list: results.list_products,
+                type_list: results.list_type,
+                customer_list: results.list_customers,
+                mess: "0"
+            });
+        }
     });
 };
 

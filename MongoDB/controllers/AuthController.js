@@ -9,8 +9,15 @@ userController.home = function(req, res) {
 };
 
 // Go to loginOK page
-userController.loginOK = function(req, res) {
-    res.render('loginOK');
+userController.loginOK = function(req, res, next) {
+    if (req.user)
+    {
+        res.render('index', {
+            mess: "10"
+        });
+    }
+    //res.render('index');
+
 };
 
 // Go to registration page
@@ -70,15 +77,8 @@ userController.doSignup= function(req, res) {
 
 // Post login
 userController.doLogin = function(req, res) {
-    User.findOne({'username': req.body.username}, function (err, user) {
-        if (err)
-            return res.render('index', {user: user});
-        if (!user || !user.validPassword(req.body.password))
-            return res.redirect('loginOK');
-    });
-
     passport.authenticate('local')(req, res, function () {
-        res.redirect('/loginOK');
+        res.redirect('/');
         });
 };
 

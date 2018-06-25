@@ -1,82 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <title>{{title}}</title>
-      <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
-      <link href='/stylesheets/bootstrap.css' rel='stylesheet' type='text/css' media='all' />
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src='/javascripts/jquery.min.js'></script>
-      <!-- Custom Theme files -->
-      <!--theme-style-->
-      <link href='/stylesheets/style.css' rel='stylesheet'/>
-      <!--//theme-style-->
-      <meta name='viewport' content='width=device-width, initial-scale=1'>
-      <meta http-equiv="Content-Type" content='text/html; charset=utf-8' />
-      <meta name='keywords' content='Fashion Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design' />
-      <script type='application/x-javascript'> addEventListener('load', function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-      <!--fonts-->
-      <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-      <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-      <!--//fonts-->
-  </head>
-  <body>
-  <!--header-->
-  <div class="header">
-      <div class="header-top">
-          <div class="container">
-              <div class="header-grid">
-                  <ul>
-                      <li><a href="#" class="scroll">Articles</a></li><!--articles.html-->
-                      <li><a href="#" class="scroll">Contact</a></li><!--contact.html-->
-                      <li><a href="#" class="scroll">Terms</a></li>
-                  </ul>
-              </div>
-              <div class="header-grid-right">
-                  <a href="#" class="sign-in">Sign In</a>
-                    <form action = "/login" method="post">
+<head>
+    <title>{{title}}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png"/>
+    <link href='/stylesheets/bootstrap.css' rel='stylesheet' type='text/css' media='all'/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src='/javascripts/jquery.min.js'></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href='/stylesheets/style.css' rel='stylesheet'/>
+    <!--//theme-style-->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta http-equiv="Content-Type" content='text/html; charset=utf-8'/>
+    <meta name='keywords' content='Fashion Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design'/>
+    <script type='application/x-javascript'> addEventListener('load', function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+</head>
+<body>
+<!--header-->
+<div class="header">
+    <div class="header-top">
+        <div class="container">
+            <div class="header-grid">
+                <ul>
+                    <li><a href="#" class="scroll">Articles</a></li><!--articles.html-->
+                    <li><a href="#" class="scroll">Contact</a></li><!--contact.html-->
+                    <li><a href="#" class="scroll">Terms</a></li>
+                </ul>
+            </div>
+            {{#ifValue "10" mess}}
+                <div class="header-grid-right">
+                    <label>Login Successful</label>
+                </div>
+            {{else}}
+                <div class="header-grid-right">
+                    <a href="#" class="sign-in">Sign In</a>
+                    <form action="/login" method="post">
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password" placeholder="Password">
-                        <input type="submit" value="Go" >
+                        <input type="submit" value="Go">
                     </form>
-                  <label>|</label>
-                  <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
-              </div>
-              <div class="clearfix"> </div>
-          </div>
-      </div>
-      <div class="container">
-          <div class="header-bottom">
-              <div class="logo">
-                  <a href="/"><img src="/images/logo.png" alt=" " ></a>
-              </div>
-              <div class="ad-right">
-                  <img class="img-responsive" src="/images/ad.png" alt=" " >
-              </div>
-              <div class="clearfix"> </div>
-          </div>
-      </div>
-  </div>
-    {{{body}}}
-  <!--footer-->
-  <div class="footer">
-      <div class="container">
-          <div class="footer-class">
-              <div class="class-footer">
-                  <ul>
-                      <li ><a href="/" class="scroll">Home </a><label>|</label></li>
-                      {{#each type_list}}
-                          <li><a href="/type/{{this._id}}" >{{this.name}}</a><label>|</label></li><!--men.html-->
-                      {{/each}}
-                  </ul>
-              </div>
-              <div class="footer-left">
-                  <a href="/"><img src="/images/logo1.png" alt=" " ></a>
-              </div>
-              <div class="clearfix"> </div>
-          </div>
-      </div>
-  </div>
-  </body>
+                    <label>|</label>
+                    <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
+                </div>
+            {{/ifValue}}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header-bottom">
+            <div class="logo">
+                <a href="/"><img src="/images/logo.png" alt=" "></a>
+            </div>
+            <div class="ad-right">
+                <img class="img-responsive" src="/images/ad.png" alt=" ">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+{{{body}}}
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="footer-class">
+            <div class="class-footer">
+                <ul>
+                    <li><a href="/" class="scroll">Home </a><label>|</label></li>
+                    {{#each type_list}}
+                        <li><a href="/type/{{this._id}}">{{this.name}}</a><label>|</label></li><!--men.html-->
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="footer-left">
+                <a href="/"><img src="/images/logo1.png" alt=" "></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

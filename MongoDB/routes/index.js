@@ -30,7 +30,7 @@ router.get('/', product_controller.layout);
 
 // route for login action
 router.post('/login', auth_controller.doLogin);
-router.get('/loginOK',auth_controller.loginOK);
+//router.get('/',auth_controller.loginOK);
 router.get('/signup', auth_controller.signup);
 router.post('/signup', auth_controller.doSignup);
 
