@@ -27,11 +27,25 @@ exports.type = function (req, res, next) {
             err.status = 404;
             return next(err);
         }
-        res.render('type', {
-            title: results.curType.name,
-            typeCurrent: results.curType,
-            type_list: results.list_type,
-            product_list: results.list_products
-        });
+        if (req.user)
+        {
+            res.render('type', {
+                title: results.curType.name,
+                typeCurrent: results.curType,
+                type_list: results.list_type,
+                product_list: results.list_products,
+                user: req.user,
+                mess: "10"
+            });
+        } else {
+            res.render('type', {
+                title: results.curType.name,
+                typeCurrent: results.curType,
+                type_list: results.list_type,
+                product_list: results.list_products,
+                mess: "0"
+            });
+        }
+
     });
 };

@@ -33,7 +33,7 @@ exports.index = function (req, res, next) {
                 product_list: results.list_products,
                 type_list: results.list_type,
                 customer_list: results.list_customers,
-                user: user,
+                user: req.user,
                 mess: "10"
             });
         } else {
@@ -49,26 +49,22 @@ exports.index = function (req, res, next) {
 };
 
 exports.layout = function (req, res, next) {
-    async.parallel({
+    async.series({
         list_type: function (callback) {
             Type.find().exec(callback);
-        },
-        list_customers: function (callback) {
-            Customer.find().exec(callback);
-        },
+        }
     }, function (err, results) {
         if (err) {
             return next(err);
         }
-        if (results.list_customers == null) {
-            err = new Error('Customer || Category not found');
+        if (results.list_type == null) {
+            err = new Error('Type || Category not found');
             err.status = 404;
             return next(err);
         }
         res.render('layout', {
             title: 'Home',
             type_list: results.list_type,
-            customer_list: results.list_customers
         });
     });
 };
@@ -98,15 +94,33 @@ exports.product_detail = function (req, res, next) {
         if (err) {
             return next(err);
         }
-        res.render('info', {
-            title: results.product.product_name,
-            productCurrent: results.product,
-            type_list: results.list_type,
-            productInfo: results.product_info,
-            category_list: results.list_categories,
-            product_list: results.list_product,
-            comment_list: results.list_comment
-        });
+        //Test user login
+        if (req.user)
+        {
+            res.render('info', {
+                title: results.product.product_name,
+                productCurrent: results.product,
+                type_list: results.list_type,
+                productInfo: results.product_info,
+                category_list: results.list_categories,
+                product_list: results.list_product,
+                comment_list: results.list_comment,
+                user: req.user,
+                mess: "10"
+            });
+        } else {
+            res.render('info', {
+                title: results.product.product_name,
+                productCurrent: results.product,
+                type_list: results.list_type,
+                productInfo: results.product_info,
+                category_list: results.list_categories,
+                product_list: results.list_product,
+                comment_list: results.list_comment,
+                mess: "0"
+            });
+        }
+
     });
 };
 exports.postComment = function (req, res, next) {
