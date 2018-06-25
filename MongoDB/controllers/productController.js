@@ -4,8 +4,10 @@ var Customer = require('../models/customer');
 var Supplier = require('../models/supplier');
 var Category = require('../models/category');
 var Type = require('../models/user_object');
+var Comment = require('../models/comment');
 
 var async = require('async');
+var moment = require('moment');
 
 //Display all products
 exports.index = function (req, res, next) {
@@ -74,6 +76,9 @@ exports.product_detail = function (req, res, next) {
         },
         list_product: function (callback) {
             Product.find().exec(callback);
+        },
+        list_comment: function (callback) {
+            Comment.find({'product_id': req.params.id}).exec(callback);
         }
     }, function (err, results) {
         if (err) {
@@ -85,7 +90,19 @@ exports.product_detail = function (req, res, next) {
             type_list: results.list_type,
             productInfo: results.product_info,
             category_list: results.list_categories,
-            product_list: results.list_product
+            product_list: results.list_product,
+            comment_list: results.list_comment
         });
+    });
+};
+exports.postComment = function (req, res, next) {
+    var date = moment(new Date()).format('DD/MM/YYYY');
+    commentDetail = {product_id: req.params.id, fullname: req.body.fullname, time: date, subject: req.body.subject};
+    var comment = new Comment(commentDetail);
+    comment.save(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/product/' + req.params.id);
     });
 };

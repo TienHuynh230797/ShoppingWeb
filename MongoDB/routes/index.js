@@ -35,6 +35,7 @@ router.get('/signup', auth_controller.signup);
 router.post('/signup', auth_controller.doSignup);
 
 router.get('/product/:id', product_controller.product_detail);
+router.post('/product/:id', product_controller.postComment);
 router.get('/type/:id', type_controller.type);
 
 module.exports = router;

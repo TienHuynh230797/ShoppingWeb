@@ -264,57 +264,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="row">
             <div class="col-md-8">
                 <div class="page-header">
-                    <h1><small class="pull-right">45 comments</small> Comments </h1>
+                    <h1><small class="pull-right">{{comment_list.length}} comments</small> Comments </h1>
                 </div>
                 <div class="comments-list">
-                    <div class="media">
-                        <p class="pull-right"><small>5 days ago</small></p>
-                        <div class="media-body">
+                    {{#each comment_list}}
+                        <div class="media">
+                            <p class="pull-right"><small>{{this.time}}</small></p>
+                            <div class="media-body">
 
-                            <h4 class="media-heading user_name">Baltej Singh</h4>
-                            Wow! this is really great.
-
-                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                                <h4 class="media-heading user_name">{{this.fullname}}</h4>
+                                {{this.subject}}
+                                
+                            </div>
                         </div>
-                    </div>
-                    <div class="media">
-                        <p class="pull-right"><small>5 days ago</small></p>
-                        <div class="media-body">
-
-                            <h4 class="media-heading user_name">Baltej Singh</h4>
-                            Wow! this is really great.
-
-                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <p class="pull-right"><small>5 days ago</small></p>
-                        <div class="media-body">
-
-                            <h4 class="media-heading user_name">Baltej Singh</h4>
-                            Wow! this is really great.
-
-                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <p class="pull-right"><small>5 days ago</small></p>
-                        <div class="media-body">
-
-                            <h4 class="media-heading user_name">Baltej Singh</h4>
-                            Wow! this is really great.
-
-                            <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
-
-
-
             </div>
         </div>
         <div class="comment">
-            <form>
+            <form action="/product/{{productCurrent._id}}" method="post">
                 <label for="fname">Full Name</label>
                 <br>
                 <input type="text" id="fname" name="fullname" placeholder="Your name..">
