@@ -13,7 +13,7 @@ var moment = require('moment');
 exports.index = function (req, res, next) {
     async.parallel({
         list_products: function (callback) {
-            Product.find().exec(callback);
+            Product.find().limit(6).exec(callback);
         },
         list_type: function (callback) {
             Type.find().exec(callback);
