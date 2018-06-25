@@ -6,6 +6,7 @@ var Product_Info = require('./models/product_info');
 var Supplier = require('./models/supplier');
 var Category = require('./models/category');
 var User_Object = require('./models/user_object');
+var Comment = require('./models/comment');
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb://admin:admin@ds016298.mlab.com:16298/shoppingwebsitedb';
@@ -21,6 +22,7 @@ var product_infos = [];
 var suppliers = [];
 var categories = [];
 var user_objects = [];
+var comments = [];
 
 function categoryCreate(name, cb) {
     categoryDetail = {name: name};
@@ -120,8 +122,38 @@ function product_infoCreate(id, image, product, size, quantity, color, cb) {
         cb(null, product_info);
     });
 }
-
-
+function commentCreate(product_id, fullname, time, subject, cb) {
+    commentDetail = {product_id: product_id, fullname: fullname, time: time, subject: subject};
+    var comment = new Comment(commentDetail);
+    comment.save(function (err) {
+        if (err) {
+            cb(err, null);
+            return;
+        }
+        console.log('New comment: ' + comment);
+        comments.push(comment);
+        cb(null, comment);
+    });
+}
+function createComments(cb) {
+    async.series([
+        function (callback) {
+            commentCreate(products[5], 'Tien Tran', '25/06/2018', 'Very good. I like it', callback);
+        },
+        function (callback) {
+            commentCreate(products[5], 'Tien Tran', '24/06/2018', 'Hmmmmmmmm', callback);
+        },
+        function (callback) {
+            commentCreate(products[5], 'Tien Tran', '23/06/2018', 'It has the best material ever', callback);
+        },
+        function (callback) {
+            commentCreate(products[5], 'Tien Tran', '23/06/2018', 'You can buy it for your girlfriend', callback);
+        },
+        function (callback) {
+            commentCreate(products[5], 'Tien Tran', '22/06/2018', 'Very good. I like it', callback);
+        }
+    ], cb);
+}
 function createCustomers(cb) {
     async.series([
         function (callback) {
@@ -242,7 +274,8 @@ async.series([
         createUser_Objects,
         createProducts,
         createProduct_Infos,
-        createCustomers_products
+        createCustomers_products,
+        createComments
     ],
 // Optional callback
     function(err, results) {
