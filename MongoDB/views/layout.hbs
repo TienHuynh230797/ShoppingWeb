@@ -40,6 +40,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#" class="scroll">Terms</a></li>
                 </ul>
             </div>
+            <script>
+                function validateForm() {
+                    var username = document.forms["loginForm"]["username"].value;
+                    var password = document.forms["loginForm"]["password"].value;
+                    if (username == "") {
+                        alert("Name must be filled out");
+                        return false;
+                    } else if (password == "") {
+                        alert("Please enter your password");
+                        return false;
+                    }
+                }
+            </script>
             {{#ifValue "10" mess}}
                 <div class="header-grid-right">
                     <label>Login Successful</label>
@@ -47,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             {{else}}
                 <div class="header-grid-right">
                     <a href="#" class="sign-in">Sign In</a>
-                    <form action="/login" method="post">
+                    <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password" placeholder="Password">
                         <input type="submit" value="Go">
