@@ -59,7 +59,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
                 </div>
             {{else}}
-<<<<<<< HEAD
                 {{#ifValue "11" mess}}
                     <div class="header-grid-right">
                         <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
@@ -80,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         {{else}}
                             <div class="header-grid-right">
                                 <a href="#" class="sign-in">Sign In</a>
-                                <form action="/login" method="post">
+                                <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
                                     <input type="text" name="username" placeholder="Username">
                                     <input type="password" name="password" placeholder="Password">
                                     <input type="submit" value="Go">
@@ -91,18 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         {{/ifValue}}
                     {{/ifValue}}
                 {{/ifValue}}
-=======
-                <div class="header-grid-right">
-                    <a href="#" class="sign-in">Sign In</a>
-                    <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="submit" value="Go">
-                    </form>
-                    <label>|</label>
-                    <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
-                </div>
->>>>>>> 5f4effbb79ba6574b5c92fde8c9897e20b36fd96
+
             {{/ifValue}}
             <div class="clearfix"></div>
         </div>
