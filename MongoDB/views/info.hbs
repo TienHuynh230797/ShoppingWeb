@@ -56,9 +56,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clearfix"></div>
             </div>
             <div class="search">
-                <form>
-                    <input type="text" value="Search" onfocus="this.value = '';"
-                           onblur="if (this.value === '') {this.value = '';}">
+                <form action="/search/{{this.content}}" method="get">
+                    <input type="text" name="content" placeholder="Search" onfocus="this.value = '';">
                     <input type="submit" value="">
                 </form>
             </div>
@@ -274,18 +273,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 <h4 class="media-heading user_name">{{this.fullname}}</h4>
                                 {{this.subject}}
-                                
+
                             </div>
                         </div>
                     {{/each}}
                 </div>
             </div>
         </div>
+        <script>
+            function validateForm() {
+                var x = document.forms["commentForm"]["fullname"].value;
+                var y = document.forms["commentForm"]["subject"].value;
+                if (x == "") {
+                    alert("Name must be filled out");
+                    return false;
+                } else if (y == "") {
+                    alert("You should write something");
+                    return false;
+                }
+            }
+        </script>
         <div class="comment">
-            <form action="/product/{{productCurrent._id}}" method="post">
+            <form action="/product/{{productCurrent._id}}" onsubmit="return validateForm()" method="post" name="commentForm">
                 <label for="fname">Full Name</label>
                 <br>
-                <input type="text" id="fname" name="fullname" placeholder="Your name..">
+                {{#if user}}
+                    <input type="text" id="fname" name="fullname" placeholder="Your name.." value="{{user.name}}" readonly>
+                {{else}}
+                    <input type="text" id="fname" name="fullname" placeholder="Your name..">
+                {{/if}}
                 <br>
                 <label for="subject">Subject</label>
                 <br>

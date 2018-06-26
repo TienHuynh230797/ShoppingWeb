@@ -40,12 +40,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="#" class="scroll">Terms</a></li>
                 </ul>
             </div>
+            <script>
+                function validateForm() {
+                    var username = document.forms["loginForm"]["username"].value;
+                    var password = document.forms["loginForm"]["password"].value;
+                    if (username == "") {
+                        alert("Name must be filled out");
+                        return false;
+                    } else if (password == "") {
+                        alert("Please enter your password");
+                        return false;
+                    }
+                }
+            </script>
             {{#ifValue "10" mess}}
                 <div class="header-grid-right">
                     <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
                     <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
                 </div>
             {{else}}
+<<<<<<< HEAD
                 {{#ifValue "11" mess}}
                     <div class="header-grid-right">
                         <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
@@ -77,6 +91,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         {{/ifValue}}
                     {{/ifValue}}
                 {{/ifValue}}
+=======
+                <div class="header-grid-right">
+                    <a href="#" class="sign-in">Sign In</a>
+                    <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="submit" value="Go">
+                    </form>
+                    <label>|</label>
+                    <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
+                </div>
+>>>>>>> 5f4effbb79ba6574b5c92fde8c9897e20b36fd96
             {{/ifValue}}
             <div class="clearfix"></div>
         </div>

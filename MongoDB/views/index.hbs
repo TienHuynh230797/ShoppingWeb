@@ -25,9 +25,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clearfix"></div>
             </div>
             <div class="search">
-                <form>
-                    <input type="text" value="Search" onfocus="this.value = '';"
-                           onblur="if (this.value === '') {this.value = '';}">
+                <form action="/search/{{this.content}}" method="get">
+                    <input type="text" name="content" placeholder="Search" onfocus="this.value = '';">
                     <input type="submit" value="">
                 </form>
             </div>
@@ -71,8 +70,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     </div>
                                 {{/if}}
                                 <p>{{this.product_name}}</p>
-                                <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label> <a href="#">Add to
-                                Cart </a>
+                                <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label>
+                                <a href="#">Add to
+                                    Cart </a>
                             </div>
                         {{/each}}
                     </div>
