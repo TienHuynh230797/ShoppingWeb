@@ -25,8 +25,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clearfix"></div>
             </div>
             <div class="search">
-                <form>
-                    <input type="text" placeholder="Search" onfocus="this.value = '';">
+                <form action="/search/{{this.content}}" method="get">
+                    <input type="text" name="content" placeholder="Search" onfocus="this.value = '';">
                     <input type="submit" value="">
                 </form>
             </div>

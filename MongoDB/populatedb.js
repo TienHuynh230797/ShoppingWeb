@@ -1,5 +1,4 @@
 var async = require('async');
-var Customer = require('./models/customer');
 var Customer_Product = require('./models/customer_product');
 var Product = require('./models/product');
 var Product_Info = require('./models/product_info');
@@ -15,7 +14,6 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-var customers = [];
 var customers_products = [];
 var products = [];
 var product_infos = [];
@@ -52,8 +50,8 @@ function user_objectCreate(name, cb) {
     });
 }
 
-function supplierCreate(company_id, company_name, address, telephone, email, cb) {
-    supplierDetail = {company_id: company_id, company_name: company_name, address: address, telephone: telephone, email: email};
+function supplierCreate(company_name, address, telephone, email, cb) {
+    supplierDetail = {company_name: company_name, address: address, telephone: telephone, email: email};
     var supplier = new Supplier(supplierDetail);
     supplier.save(function (err) {
         if(err) {
@@ -66,23 +64,9 @@ function supplierCreate(company_id, company_name, address, telephone, email, cb)
     });
 }
 
-function customerCreate(id_number, username, password, firstName, lastName, birthDay, address, telephone, email, position, cb) {
-    customerDetail = {id_number: id_number, username: username, password: password, firstName: firstName, lastName: lastName, birthDay: birthDay, address: address, telephone: telephone, email: email, position: position};
-    var customer = new Customer(customerDetail);
-    customer.save(function (err) {
-        if (err) {
-            cb(err, null);
-            return;
-        }
-        console.log('New customer: ' + customer);
-        customers.push(customer);
-        cb(null, customer);
-    });
-}
 
-
-function productCreate(product_id, product_name, product_company, category, type, size_range, price, discount, discount_price, total_quantity, image, cb) {
-    productDetail = {product_id: product_id, product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_price: discount_price, total_quantity: total_quantity, image: image};
+function productCreate(product_name, product_company, category, type, size_range, price, discount, discount_price, total_quantity, image, cb) {
+    productDetail = {product_name: product_name, product_company: product_company, category: category, type: type, size_range: size_range, price: price, discount: discount, discount_price: discount_price, total_quantity: total_quantity, image: image};
     var product = new Product(productDetail);
     product.save(function (err) {
         if (err) {
@@ -96,7 +80,7 @@ function productCreate(product_id, product_name, product_company, category, type
 }
 
 function customers_productCreate(purchase_id, customer, product_id, quantity,price,  discount_value, dateofpurchase, cb) {
-    customers_productDetail = {purchase_id: purchase_id, customer: customer, product_id: product_id, quantity: quantity, price: price,  discount_value: discount_value, dateofpurchase: dateofpurchase};
+    customers_productDetail = {customer: customer, product_id: product_id, quantity: quantity, price: price,  discount_value: discount_value, dateofpurchase: dateofpurchase};
     var customers_product = new Customer_Product(customers_productDetail);
     customers_product.save(function (err) {
         if (err) {
@@ -109,8 +93,8 @@ function customers_productCreate(purchase_id, customer, product_id, quantity,pri
     });
 }
 
-function product_infoCreate(id, image, product, size, quantity, color, cb) {
-    product_infoDetail = {id: id, image: image, product: product, size: size, quantity: quantity, color: color  };
+function product_infoCreate(image, product, size, quantity, color, cb) {
+    product_infoDetail = {image: image, product: product, size: size, quantity: quantity, color: color  };
     var  product_info = new Product_Info(product_infoDetail);
     product_info.save(function (err) {
         if(err) {
@@ -154,24 +138,11 @@ function createComments(cb) {
         }
     ], cb);
 }
-function createCustomers(cb) {
-    async.series([
-        function (callback) {
-            customerCreate(1,'admin','admin','Huynh','Tien','1997-07-23','123 NVC','0123456789','htht@gmail.com', 'admin', callback);
-        },
-        function (callback) {
-            customerCreate(2, 'tien', '123', 'Tran','Tien','1997-01-03','123 NVC','0123456789','tien@gmail.com','customer', callback);
-        },
-        function (callback) {
-            customerCreate(3,'an','123','Nguyen','An','1997-01-05','123 NVC','0123456789','an@gmail.com','customer', callback);
-        },
-    ], cb);
-}
 
 function createSuppliers(cb) {
     async.series([
         function (callback) {
-            supplierCreate(1,'Zalo','District 5','0123456789','zalo@gmail.com',callback);
+            supplierCreate('Zalo','District 5','0123456789','zalo@gmail.com',callback);
         }
         ],cb);
 }
@@ -214,22 +185,22 @@ function createUser_Objects(cb) {
 function createProducts(cb) {
     async.series([
         function (callback) {
-            productCreate(1,'Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,10,900000,5,'/images/BlueTShirt.jpg',callback);
+            productCreate('Blue T-Shirt',suppliers[0],categories[1],user_objects[1],9,1000000,10,900000,5,'/images/BlueTShirt.jpg',callback);
          },
         function (callback) {
-            productCreate(2,'Black Jean',suppliers[0],categories[0],user_objects[0],5,2000000,0,2000000,2,'/images/BlackJean.jpg',callback);
+            productCreate('Black Jean',suppliers[0],categories[0],user_objects[0],5,2000000,0,2000000,2,'/images/BlackJean.jpg',callback);
         },
         function (callback) {
-            productCreate(3,'Red T-Shirt',suppliers[0],categories[1],user_objects[1],6,2500000,10,2250000,3,'/images/RedTShirt.jpg',callback);
+            productCreate('Red T-Shirt',suppliers[0],categories[1],user_objects[1],6,2500000,10,2250000,3,'/images/RedTShirt.jpg',callback);
         },
         function (callback) {
-            productCreate(4,'Black Dress',suppliers[0],categories[2],user_objects[1],7,3000000,15,2550000,4,'/images/BlackDress.jpg',callback);
+            productCreate('Black Dress',suppliers[0],categories[2],user_objects[1],7,3000000,15,2550000,4,'/images/BlackDress.jpg',callback);
         },
         function (callback) {
-            productCreate(5,'Chelsea Kid Clothes',suppliers[0],categories[3],user_objects[2],8,1000000,10,900000,5,'/images/ChelseaKidClothes.jpg',callback);
+            productCreate('Chelsea Kid Clothes',suppliers[0],categories[3],user_objects[2],8,1000000,10,900000,5,'/images/ChelseaKidClothes.jpg',callback);
         },
         function (callback) {
-            productCreate(6,'White Dress',suppliers[0],categories[2],user_objects[1],9,2200000,15,1870000,6,'/images/WhiteDress.jpg',callback);
+            productCreate('White Dress',suppliers[0],categories[2],user_objects[1],9,2200000,15,1870000,6,'/images/WhiteDress.jpg',callback);
         },
     ],cb);
 }
@@ -237,25 +208,25 @@ function createProducts(cb) {
 function createProduct_Infos(cb) {
     async.series([
         function (callback) {
-            product_infoCreate(1,'/images/BlueTShirt.jpg',products[0],'L',5,'Blue',callback);
+            product_infoCreate('/images/BlueTShirt.jpg',products[0],'L',5,'Blue',callback);
         },
         function (callback) {
-            product_infoCreate(2,'/images/BlackJean.jpg',products[1],'XL',5,'Black',callback);
+            product_infoCreate('/images/BlackJean.jpg',products[1],'XL',5,'Black',callback);
         },
         function (callback) {
-            product_infoCreate(3,'/images/RedTShirt.jpg',products[2],'L',5,'Red',callback);
+            product_infoCreate('/images/RedTShirt.jpg',products[2],'L',5,'Red',callback);
         },
         function (callback) {
-            product_infoCreate(4,'/images/BlackDress.jpg',products[3],'L',5,'Black',callback);
+            product_infoCreate('/images/BlackDress.jpg',products[3],'L',5,'Black',callback);
         },
         function (callback) {
-            product_infoCreate(5,'/images/ChelseaKidClothes.jpg',products[4],'M',5,'Blue',callback);
+            product_infoCreate('/images/ChelseaKidClothes.jpg',products[4],'M',5,'Blue',callback);
         },
         function (callback) {
-            product_infoCreate(6,'/images/WhiteDress.jpg',products[5],'L',5,'White',callback);
+            product_infoCreate('/images/WhiteDress.jpg',products[5],'L',5,'White',callback);
         },
         function (callback) {
-            product_infoCreate(7, '/images/NAYEON-SANTA.jpg', products[5], 'M', 5, 'Red', callback);
+            product_infoCreate('/images/NAYEON-SANTA.jpg', products[5], 'M', 5, 'Red', callback);
         }
     ],cb);
 }
@@ -268,13 +239,11 @@ function createCustomers_products(cb) {
 
 
 async.series([
-        createCustomers,
         createSuppliers,
         createCategories,
         createUser_Objects,
         createProducts,
         createProduct_Infos,
-        createCustomers_products,
         createComments
     ],
 // Optional callback

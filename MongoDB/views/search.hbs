@@ -8,13 +8,9 @@
             <div class="top-nav">
                 <span class="menu"> </span>
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/">Home</a></li>
                     {{#each type_list}}
-                        {{#ifEquals this._id ../typeCurrent._id}}
-                            <li class="active"><a href="/type/{{this._id}}">{{this.name}}</a></li><!--men.html-->
-                        {{else}}
-                            <li><a href="/type/{{this._id}}">{{this.name}}</a></li><!--men.html-->
-                        {{/ifEquals}}
+                        <li><a href="/type/{{this._id}}">{{this.name}}</a></li><!--men.html-->
                     {{/each}}
                 </ul>
                 <script>
@@ -38,10 +34,11 @@
 <div class="content">
     <div class="container">
         <div class="women-in">
+            <h4>Don't like this result. Try our <a href="/advanced-search">Advanced search</a>.</h4>
             <div class="col-md-9 col-d">
                 <div class="in-line">
                     <div class="lady-in">
-                        {{# each product_list}}
+                        {{# each search_list}}
                             <div class="col-md-4 you-para">
                                 <a href="{{this.url}}"><img class="img-responsive pic-in" src="../{{this.image}}"
                                                             alt="ERROR"></a>
@@ -52,8 +49,9 @@
                                     </div>
                                 {{/if}}
                                 <p>{{this.product_name}}</p>
-                                <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label> <a href="#">Add to
-                                Cart </a>
+                                <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label>
+                                <a href="#">Add to
+                                    Cart </a>
                             </div>
                         {{/each}}
                     </div>
@@ -88,6 +86,50 @@
                 </div>
             </div>
             <div class="clearfix"></div>
+        </div>
+        <div class="lady-in-on">
+            <div class="buy-an">
+                <h3>OTHER PRODUCTS</h3>
+                <p>Check our all latest products in this section.</p>
+            </div>
+            <ul id="flexiselDemo1">
+                {{#each product_list}}
+                    <li><a href="{{this.url}}"><img class="img-responsive women" src="{{this.image}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>{{this.product_name}}</p>
+                            <span>{{formatCurrency this.discount_price}}₫  |  <a href="{{this.url}}">Buy Now </a></span>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    $("#flexiselDemo1").flexisel({
+                        visibleItems: 4,
+                        animationSpeed: 1000,
+                        autoPlay: true,
+                        autoPlaySpeed: 3000,
+                        pauseOnHover: true,
+                        enableResponsiveBreakpoints: true,
+                        responsiveBreakpoints: {
+                            portrait: {
+                                changePoint: 480,
+                                visibleItems: 1
+                            },
+                            landscape: {
+                                changePoint: 640,
+                                visibleItems: 2
+                            },
+                            tablet: {
+                                changePoint: 768,
+                                visibleItems: 3
+                            }
+                        }
+                    });
+
+                });
+            </script>
+            <script type="text/javascript" src="/javascripts/jquery.flexisel.js"></script>
         </div>
     </div>
 </div>

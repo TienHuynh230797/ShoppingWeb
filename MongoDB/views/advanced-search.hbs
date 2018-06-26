@@ -1,0 +1,149 @@
+<head>
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="header-bottom-bottom">
+            <div class="top-nav">
+                <span class="menu"> </span>
+                <ul>
+                    <li class="active"><a href="/">Home</a></li>
+                    {{#each type_list}}
+                        <li><a href="/type/{{this._id}}">{{this.name}}</a></li><!--men.html-->
+                    {{/each}}
+                </ul>
+                <script>
+                    $("span.menu").click(function () {
+                        $(".top-nav ul").slideToggle(500, function () {
+                        });
+                    });
+                </script>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="women-in">
+            <div class="row" id="search">
+                <form id="search-form" action="/advanced-search/{{this.content}}{{this.supplier}}{{this.category}}{{this.type}}{{this.price}}" method="get">
+                    <div class="form-group col-xs-9">
+                        <input name="content" class="form-control" type="text" placeholder="Search"/>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <button type="submit" class="btn btn-block btn-primary">Search</button>
+                    </div>
+                    <div class="row" id="filter">
+                        <div class="form-group col-sm-3 col-xs-6">
+                            <select name="supplier" class="filter-make filter form-control">
+                                <option value="">Select Supplier</option>
+                                <option value="Show All">Show All</option>
+                                {{#each supplier_list}}
+                                    <option value="{{this._id}}">{{this.company_name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3 col-xs-6">
+                            <select name="category" class="filter-model filter form-control">
+                                <option value="">Select Category</option>
+                                <option value="Show All">Show All</option>
+                                {{#each category_list}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3 col-xs-6">
+                            <select name="type" class="filter-type filter form-control">
+                                <option value="">Select Type</option>
+                                <option value="Show All">Show All</option>
+                                {{#each type_list}}
+                                    <option value="{{this._id}}">{{this.name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3 col-xs-6">
+                            <select name="price" class="filter-price filter form-control">
+                                <option value="">Select Price Range</option>
+                                <option value="Show All">Show All</option>
+                                <option value="0-500000">0 - 500,000</option>
+                                <option value="500000-1000000">500,000 - 1,000,000</option>
+                                <option value="1000000-5000000">1,000,000 - 5,000,000</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-9 col-d">
+                <div class="in-line">
+                    <div class="lady-in">
+                        {{# each search_list}}
+                            <div class="col-md-4 you-para">
+                                <a href="{{this.url}}"><img class="img-responsive pic-in" src="../{{this.image}}"
+                                                            alt="ERROR"></a>
+                                {{#if this.discount_amount}}
+                                    <div class="you-in">
+                                        <span><label>{{this.discount_amount}}%</label></span>
+                                        <small>off</small>
+                                    </div>
+                                {{/if}}
+                                <p>{{this.product_name}}</p>
+                                <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label>
+                                <a href="#">Add to
+                                    Cart </a>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="lady-in-on">
+            <div class="buy-an">
+                <h3>OTHER PRODUCTS</h3>
+                <p>Check our all latest products in this section.</p>
+            </div>
+            <ul id="flexiselDemo1">
+                {{#each product_list}}
+                    <li><a href="{{this.url}}"><img class="img-responsive women" src="{{this.image}}" alt=""></a>
+                        <div class="hide-in">
+                            <p>{{this.product_name}}</p>
+                            <span>{{formatCurrency this.discount_price}}₫  |  <a href="{{this.url}}">Buy Now </a></span>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            <script type="text/javascript">
+                $(window).load(function () {
+                    $("#flexiselDemo1").flexisel({
+                        visibleItems: 4,
+                        animationSpeed: 1000,
+                        autoPlay: true,
+                        autoPlaySpeed: 3000,
+                        pauseOnHover: true,
+                        enableResponsiveBreakpoints: true,
+                        responsiveBreakpoints: {
+                            portrait: {
+                                changePoint: 480,
+                                visibleItems: 1
+                            },
+                            landscape: {
+                                changePoint: 640,
+                                visibleItems: 2
+                            },
+                            tablet: {
+                                changePoint: 768,
+                                visibleItems: 3
+                            }
+                        }
+                    });
+
+                });
+            </script>
+            <script type="text/javascript" src="/javascripts/jquery.flexisel.js"></script>
+        </div>
+    </div>
+</div>
+</body>

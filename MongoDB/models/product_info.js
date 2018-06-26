@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ProductInfoModelSchema = new Schema({
-    id: {type: Number, required: true, unique:true },
     image: {type: String},
     product: {type: Schema.ObjectId, ref: 'Product'},
     size: {type: String,

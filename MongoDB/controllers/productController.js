@@ -1,6 +1,5 @@
 var Product = require('../models/product');
 var Product_Info = require('../models/product_info');
-var Customer = require('../models/customer');
 var Supplier = require('../models/supplier');
 var Category = require('../models/category');
 var Type = require('../models/user_object');
@@ -18,9 +17,6 @@ exports.index = function (req, res, next) {
         list_type: function (callback) {
             Type.find().exec(callback);
         },
-        list_customers: function (callback) {
-            Customer.find().exec(callback);
-        },
     }, function (err, results) {
         if (err) {
             return next(err);
@@ -32,7 +28,6 @@ exports.index = function (req, res, next) {
                 title: 'Home',
                 product_list: results.list_products,
                 type_list: results.list_type,
-                customer_list: results.list_customers,
                 user: req.user,
                 mess: "10"
             });
@@ -41,7 +36,6 @@ exports.index = function (req, res, next) {
                 title: 'Home',
                 product_list: results.list_products,
                 type_list: results.list_type,
-                customer_list: results.list_customers,
                 mess: "0"
             });
         }
@@ -132,5 +126,146 @@ exports.postComment = function (req, res, next) {
             return next(err);
         }
         res.redirect('/product/' + req.params.id);
+    });
+};
+exports.search = function (req, res, next) {
+    async.series({
+        list_type: function (callback) {
+            Type.find().exec(callback);
+        },
+        list_products: function (callback) {
+            Product.find().exec(callback);
+        },
+        list_search: function (callback) {
+            Product.find({'product_name' : {$regex : req.query.content}}).exec(callback);
+        }
+    }, function (err, results) {
+        if (err) {
+            return next(err);
+        }
+        if (results.list_type == null) {
+            let err = new Error('Type not found');
+            err.status = 404;
+            return next(err);
+        }
+        if (results.list_products == null) {
+            let err = new Error('Products not found');
+            err.status = 404;
+            return next(err);
+        }
+        if (req.user)
+        {
+            res.render('search', {
+                title: req.query.content,
+                type_list: results.list_type,
+                product_list: results.list_products,
+                search_list: results.list_search,
+                user: req.user,
+                mess: "10"
+            });
+        } else {
+            res.render('search', {
+                title: req.query.content,
+                type_list: results.list_type,
+                product_list: results.list_products,
+                search_list: results.list_search,
+                mess: "0"
+            });
+        }
+    });
+};
+exports.advanced_search_init = function (req, res, next) {
+    async.parallel({
+        list_type: function (callback) {
+            Type.find().exec(callback);
+        },
+        list_category: function (callback) {
+            Category.find().exec(callback);
+        },
+        list_supplier: function (callback) {
+            Supplier.find().exec(callback);
+        }
+    }, function (err, results) {
+        if (err) {
+            return next(err);
+        }
+        if (results.list_type == null) {
+            let err = new Error('Type not found');
+            err.status = 404;
+            return next(err);
+        }
+        if (results.list_products == null) {
+            let err = new Error('Products not found');
+            err.status = 404;
+            return next(err);
+        }
+        if (req.user)
+        {
+            res.render('advanced-search', {
+                title: 'Advanced search',
+                type_list: results.list_type,
+                cagetory_list: results.list_category,
+                supplier_list: result.list_supplier,
+                user: req.user,
+                mess: "10"
+            });
+        } else {
+            res.render('advanced-search', {
+                title: 'Advanced search',
+                type_list: results.list_type,
+                cagetory_list: results.list_category,
+                supplier_list: result.list_supplier,
+                mess: "0"
+            });
+        }
+    });
+};
+exports.advanced_search = function (req, res, next) {
+    async.parallel({
+        list_type: function (callback) {
+            Type.find().exec(callback);
+        },
+        list_category: function (callback) {
+            Category.find().exec(callback);
+        },
+        list_supplier: function (callback) {
+            Supplier.find().exec(callback);
+        },
+        list_search: function (callback) {
+            Product.find({'product_name' : {$regex : req.query.content}, 'product_company': req.query.supplier, 'category': req.query.category, 'type': req.query.type, }).exec(callback);
+        }
+    }, function (err, results) {
+        if (err) {
+            return next(err);
+        }
+        if (results.list_type == null) {
+            let err = new Error('Type not found');
+            err.status = 404;
+            return next(err);
+        }
+        if (results.list_products == null) {
+            let err = new Error('Products not found');
+            err.status = 404;
+            return next(err);
+        }
+        if (req.user)
+        {
+            res.render('advanced-search', {
+                title: 'Advanced search',
+                type_list: results.list_type,
+                cagetory_list: results.list_category,
+                supplier_list: result.list_supplier,
+                user: req.user,
+                mess: "10"
+            });
+        } else {
+            res.render('advanced-search', {
+                title: 'Advanced search',
+                type_list: results.list_type,
+                cagetory_list: results.list_category,
+                supplier_list: result.list_supplier,
+                mess: "0"
+            });
+        }
     });
 };
