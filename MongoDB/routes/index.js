@@ -34,6 +34,10 @@ router.post('/login', auth_controller.doLogin);
 router.get('/signup', auth_controller.signup);
 router.post('/signup', auth_controller.doSignup);
 
+router.get('/user/:id', auth_controller.showUserDetail);
+router.get('/signout', auth_controller.logout);
+router.post('/updateUserInfo', auth_controller.updateUserDetail);
+
 router.get('/product/:id', product_controller.product_detail);
 router.post('/product/:id', product_controller.postComment);
 router.get('/type/:id', type_controller.type);

@@ -15,13 +15,14 @@ var UserSchema = new Schema({
     name: String
 });
 
+UserSchema.virtual('url').get(function () {
+    return '/user/' + this._id;
+});
+
+UserSchema.methods.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
+
 UserSchema.plugin(passportLocalMongoose);
-
-/*UserSchema.methods.validPassword = function(password) {
-    if (password === String(this.local.password))
-        return true;
-    return false;
-}*/
-
 
 module.exports = mongoose.model('User', UserSchema);

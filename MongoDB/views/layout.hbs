@@ -42,19 +42,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             {{#ifValue "10" mess}}
                 <div class="header-grid-right">
-                    <label>Login Successful</label>
+                    <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
+                    <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
                 </div>
             {{else}}
-                <div class="header-grid-right">
-                    <a href="#" class="sign-in">Sign In</a>
-                    <form action="/login" method="post">
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="submit" value="Go">
-                    </form>
-                    <label>|</label>
-                    <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
-                </div>
+                {{#ifValue "11" mess}}
+                    <div class="header-grid-right">
+                        <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
+                        <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                    </div>
+                {{else}}
+                    {{#ifValue "12" mess}}
+                        <div class="header-grid-right">
+                            <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
+                            <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                        </div>
+                    {{else}}
+                        {{#ifValue "13" mess}}
+                            <div class="header-grid-right">
+                                <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
+                                <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                            </div>
+                        {{else}}
+                            <div class="header-grid-right">
+                                <a href="#" class="sign-in">Sign In</a>
+                                <form action="/login" method="post">
+                                    <input type="text" name="username" placeholder="Username">
+                                    <input type="password" name="password" placeholder="Password">
+                                    <input type="submit" value="Go">
+                                </form>
+                                <label>|</label>
+                                <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
+                            </div>
+                        {{/ifValue}}
+                    {{/ifValue}}
+                {{/ifValue}}
             {{/ifValue}}
             <div class="clearfix"></div>
         </div>
