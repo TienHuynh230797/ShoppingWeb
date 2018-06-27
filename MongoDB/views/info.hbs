@@ -85,49 +85,69 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="clearfix"></div>
                     </div>
                     <!---->
+                    <script>
+
+                    </script>
                     <div class="span1_of_1_des">
                         <div class="desc1">
                             <h3>{{productCurrent.product_name}} </h3>
                             <!--<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>-->
                             {{#if productCurrent.discount}}
-                                <h4 style="text-decoration-line: line-through">{{formatCurrency productCurrent.price}}₫</h4>
+                                <h4 style="text-decoration-line: line-through">{{formatCurrency productCurrent.price}}
+                                    ₫</h4>
                             {{/if}}
                             <h5>{{formatCurrency productCurrent.discount_price}}₫</h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
-                                <form>
+                                <form method="get" action="/add-to-cart/{{this.selectSize}}">
                                     <ul>
                                         <li>Size:
+<<<<<<< HEAD
                                             <select>
                                                {{#each productInfo}}
                                                     <option>{{this.size}}</option>
+=======
+                                            <select name="selectSize">
+                                                <!--<option>L</option>
+                                                <option>XL</option>
+                                                <option>S</option>
+                                                <option>M</option>-->
+                                                {{#each productInfo}}
+                                                    <option value="{{this._id}}">{{this.size}}</option>
+>>>>>>> 1116171c8c1d4f38fdc017e8248ec89597e52066
                                                 {{/each}}
                                             </select>
                                         </li>
                                         <li>Color:
+<<<<<<< HEAD
                                             <select>
+=======
+                                            <select name="selectColor">
+                                                <!--<option>Red</option>
+                                                <option>Green</option>
+                                                <option>Blue</option>
+                                                <option>Pink</option>
+                                                <option>Yellow</option>
+                                                <option>Purple</option>
+                                                <option>Orange</option>
+                                                <option>Black</option>
+                                                <option>White</option>
+                                                <option>Brown</option>-->
+>>>>>>> 1116171c8c1d4f38fdc017e8248ec89597e52066
                                                 {{#each productInfo}}
-                                                    <option>{{this.color}}</option>
+                                                    <option value="{{this._id}}">{{this.color}}</option>
                                                 {{/each}}
                                             </select>
                                         </li>
                                     </ul>
                                     <div class="form-in">
+<<<<<<< HEAD
                                         <a href="/add-to-cart/{{this._id}}">Add To Cart</a>
+=======
+                                        <button type="submit">Add To Cart</button>
+>>>>>>> 1116171c8c1d4f38fdc017e8248ec89597e52066
                                     </div>
                                 </form>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="share-desc">
-                                <div class="share">
-                                    <h4>Share Product :</h4>
-                                    <ul class="share_nav">
-                                        <li><a href="#"><img src="/images/facebook.png" title="facebook"></a></li>
-                                        <li><a href="#"><img src="/images/twitter.png" title="Twiiter"></a></li>
-                                        <li><a href="#"><img src="/images/rss.png" title="Rss"></a></li>
-                                        <li><a href="#"><img src="/images/gpluse.png" title="Google+"></a></li>
-                                    </ul>
-                                </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -251,12 +271,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="row">
             <div class="col-md-8">
                 <div class="page-header">
-                    <h1><small class="pull-right">{{comment_list.length}} comments</small> Comments </h1>
+                    <h1>
+                        <small class="pull-right">{{comment_list.length}} comments</small>
+                        Comments
+                    </h1>
                 </div>
                 <div class="comments-list">
                     {{#each comment_list}}
                         <div class="media">
-                            <p class="pull-right"><small>{{this.time}}</small></p>
+                            <p class="pull-right">
+                                <small>{{this.time}}</small>
+                            </p>
                             <div class="media-body">
 
                                 <h4 class="media-heading user_name">{{this.fullname}}</h4>
@@ -282,11 +307,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
         </script>
         <div class="comment">
-            <form action="/product/{{productCurrent._id}}" onsubmit="return validateForm()" method="post" name="commentForm">
+            <form action="/product/{{productCurrent._id}}" onsubmit="return validateForm()" method="post"
+                  name="commentForm">
                 <label for="fname">Full Name</label>
                 <br>
                 {{#if user}}
-                    <input type="text" id="fname" name="fullname" placeholder="Your name.." value="{{user.name}}" readonly>
+                    <input type="text" id="fname" name="fullname" placeholder="Your name.." value="{{user.name}}"
+                           readonly>
                 {{else}}
                     <input type="text" id="fname" name="fullname" placeholder="Your name..">
                 {{/if}}
@@ -309,7 +336,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li><a href="{{this.url}}"><img class="img-responsive women" src="{{this.image}}" alt=""></a>
                             <div class="hide-in">
                                 <p>{{this.product_name}}</p>
-                                <span>{{formatCurrency this.discount_price}}₫  |  <a href="{{this.url}}">Buy Now </a></span>
+                                <span>{{formatCurrency this.discount_price}}₫  |  <a
+                                        href="{{this.url}}">Buy Now </a></span>
                             </div>
                         </li>
                     {{/ifEquals}}
