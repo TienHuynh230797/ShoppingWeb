@@ -20,6 +20,7 @@ var router = express.Router();
 var product_controller = require('../controllers/productController');
 var type_controller = require('../controllers/typeController');
 var auth_controller = require("../controllers/AuthController");
+var cart_controller = require('../controllers/cartController');
 
 //get catalog home page
 router.get('/', product_controller.index);
@@ -43,5 +44,6 @@ router.post('/product/:id', product_controller.postComment);
 router.get('/type/:id', type_controller.type);
 router.get('/search/', product_controller.search);
 router.get('/advanced-search/', product_controller.advanced_search);
+router.get('/shopping-cart/', cart_controller.get_list);
 
 module.exports = router;

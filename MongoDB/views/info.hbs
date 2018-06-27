@@ -95,39 +95,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <h5>{{formatCurrency productCurrent.discount_price}}₫</h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
-                                <ul>
-                                    <li>Size:
-                                        <select>
-                                            <!--<option>L</option>
-                                            <option>XL</option>
-                                            <option>S</option>
-                                            <option>M</option>-->
-                                            {{#each productInfo}}
-                                                <option>{{this.size}}</option>
-                                            {{/each}}
-                                        </select>
-                                    </li>
-                                    <li>Color:
-                                        <select>
-                                            <!--<option>Red</option>
-                                            <option>Green</option>
-                                            <option>Blue</option>
-                                            <option>Pink</option>
-                                            <option>Yellow</option>
-                                            <option>Purple</option>
-                                            <option>Orange</option>
-                                            <option>Black</option>
-                                            <option>White</option>
-                                            <option>Brown</option>-->
-                                            {{#each productInfo}}
-                                                <option>{{this.color}}</option>
-                                            {{/each}}
-                                        </select>
-                                    </li>
-                                </ul>
-                                <div class="form-in">
-                                    <a href="#">Add To Cart</a>
-                                </div>
+                                <form>
+                                    <ul>
+                                        <li>Size:
+                                            <select>
+                                                <!--<option>L</option>
+                                                <option>XL</option>
+                                                <option>S</option>
+                                                <option>M</option>-->
+                                                {{#each productInfo}}
+                                                    <option>{{this.size}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </li>
+                                        <li>Color:
+                                            <select>
+                                                <!--<option>Red</option>
+                                                <option>Green</option>
+                                                <option>Blue</option>
+                                                <option>Pink</option>
+                                                <option>Yellow</option>
+                                                <option>Purple</option>
+                                                <option>Orange</option>
+                                                <option>Black</option>
+                                                <option>White</option>
+                                                <option>Brown</option>-->
+                                                {{#each productInfo}}
+                                                    <option>{{this.color}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </li>
+                                    </ul>
+                                    <div class="form-in">
+                                        <a href="#">Add To Cart</a>
+                                    </div>
+                                </form>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="share-desc">

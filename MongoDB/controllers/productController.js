@@ -201,7 +201,7 @@ exports.advanced_search = function (req, res, next) {
                     $and: [{'discount_price': {$gte: Number(res[0])}}, {'discount_price': {$lte: Number(res[1])}}]
                 }).exec(callback);
             } else {
-                Product.find().exec(callback);
+                Product.find().limit(3).exec(callback);
             }
         }
     }, function (err, results) {
