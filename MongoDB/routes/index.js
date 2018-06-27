@@ -42,6 +42,6 @@ router.get('/product/:id', product_controller.product_detail);
 router.post('/product/:id', product_controller.postComment);
 router.get('/type/:id', type_controller.type);
 router.get('/search/', product_controller.search);
-router.post('/advanced-search', product_controller.advanced_search_init);
+router.get('/advanced-search/', product_controller.advanced_search);
 
 module.exports = router;

@@ -29,7 +29,9 @@
     <div class="container">
         <div class="women-in">
             <div class="row" id="search">
-                <form id="search-form" action="/advanced-search/{{this.content}}{{this.supplier}}{{this.category}}{{this.type}}{{this.price}}" method="get">
+                <form id="search-form"
+                      action="/advanced-search/{{this.content}}{{this.supplier}}{{this.category}}{{this.type}}{{this.price}}"
+                      method="get">
                     <div class="form-group col-xs-9">
                         <input name="content" class="form-control" type="text" placeholder="Search"/>
                     </div>
@@ -39,8 +41,6 @@
                     <div class="row" id="filter">
                         <div class="form-group col-sm-3 col-xs-6">
                             <select name="supplier" class="filter-make filter form-control">
-                                <option value="">Select Supplier</option>
-                                <option value="Show All">Show All</option>
                                 {{#each supplier_list}}
                                     <option value="{{this._id}}">{{this.company_name}}</option>
                                 {{/each}}
@@ -48,8 +48,6 @@
                         </div>
                         <div class="form-group col-sm-3 col-xs-6">
                             <select name="category" class="filter-model filter form-control">
-                                <option value="">Select Category</option>
-                                <option value="Show All">Show All</option>
                                 {{#each category_list}}
                                     <option value="{{this._id}}">{{this.name}}</option>
                                 {{/each}}
@@ -57,8 +55,6 @@
                         </div>
                         <div class="form-group col-sm-3 col-xs-6">
                             <select name="type" class="filter-type filter form-control">
-                                <option value="">Select Type</option>
-                                <option value="Show All">Show All</option>
                                 {{#each type_list}}
                                     <option value="{{this._id}}">{{this.name}}</option>
                                 {{/each}}
@@ -66,8 +62,6 @@
                         </div>
                         <div class="form-group col-sm-3 col-xs-6">
                             <select name="price" class="filter-price filter form-control">
-                                <option value="">Select Price Range</option>
-                                <option value="Show All">Show All</option>
                                 <option value="0-500000">0 - 500,000</option>
                                 <option value="500000-1000000">500,000 - 1,000,000</option>
                                 <option value="1000000-5000000">1,000,000 - 5,000,000</option>
@@ -79,22 +73,26 @@
             <div class="col-md-9 col-d">
                 <div class="in-line">
                     <div class="lady-in">
-                        {{# each search_list}}
-                            <div class="col-md-4 you-para">
-                                <a href="{{this.url}}"><img class="img-responsive pic-in" src="../{{this.image}}"
-                                                            alt="ERROR"></a>
-                                {{#if this.discount_amount}}
-                                    <div class="you-in">
-                                        <span><label>{{this.discount_amount}}%</label></span>
-                                        <small>off</small>
-                                    </div>
-                                {{/if}}
-                                <p>{{this.product_name}}</p>
-                                <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label>
-                                <a href="#">Add to
-                                    Cart </a>
-                            </div>
-                        {{/each}}
+                        {{#if search_list.length}}
+                            {{# each search_list}}
+                                <div class="col-md-4 you-para">
+                                    <a href="{{this.url}}"><img class="img-responsive pic-in" src="../{{this.image}}"
+                                        alt="ERROR"></a>
+                                    {{#if this.discount_amount}}
+                                        <div class="you-in">
+                                            <span><label>{{this.discount_amount}}%</label></span>
+                                            <small>off</small>
+                                        </div>
+                                    {{/if}}
+                                    <p>{{this.product_name}}</p>
+                                    <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label>
+                                    <a href="#">Add to
+                                        Cart </a>
+                                </div>
+                            {{/each}}
+                        {{else}}
+                            <h4>Not found</h4>
+                        {{/if}}
                     </div>
                 </div>
             </div>
