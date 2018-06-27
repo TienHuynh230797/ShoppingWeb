@@ -55,26 +55,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </script>
             {{#ifValue "10" mess}}
                 <div class="header-grid-right">
-                    <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
-                    <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                    <a href="/user/{{user._id}}" class="sign-up">Xin chào, {{user.name}}</a>
+                    <label>|</label>
+                    <a href="/signout" id="signoutButton" class="sign-up">Sign out</a><!--signup.html-->
                 </div>
             {{else}}
                 {{#ifValue "11" mess}}
                     <div class="header-grid-right">
-                        <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
-                        <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                        <a href="/user/{{user._id}}" class="sign-up">Xin chào, {{user.name}}</a><!--signup.html-->
+                        <a href="/signout" id="signoutButton" class="sign-up">Sign out</a><!--signup.html-->
                     </div>
                 {{else}}
                     {{#ifValue "12" mess}}
                         <div class="header-grid-right">
-                            <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
-                            <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                            <a href="/user/{{user._id}}" class="sign-up">Xin chào, {{user.name}}</a><!--signup.html-->
+                            <a href="/signout" id="signoutButton" class="sign-up">Sign out</a><!--signup.html-->
                         </div>
                     {{else}}
                         {{#ifValue "13" mess}}
                             <div class="header-grid-right">
-                                <a href="/user/{{user._id}}" class="sign-up">{{user.name}}</a><!--signup.html-->
-                                <a href="/signout" class="sign-up">Sign out</a><!--signup.html-->
+                                <a href="/user/{{user._id}}" class="sign-up">Xin chào, {{user.name}}</a><!--signup.html-->
+                                <a href="/signout" id="signoutButton" class="sign-up">Sign out</a><!--signup.html-->
                             </div>
                         {{else}}
                             <div class="header-grid-right">
@@ -85,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <input type="submit" value="Go">
                                 </form>
                                 <label>|</label>
-                                <a href="/signup" class="sign-up">Sign Up</a><!--signup.html-->
+                                <a href="/signup" class="sign-up2">Sign Up</a><!--signup.html-->
                             </div>
                         {{/ifValue}}
                     {{/ifValue}}
