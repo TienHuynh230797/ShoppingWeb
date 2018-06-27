@@ -1,7 +1,7 @@
 var passport = require("passport");
 var User = require("../models/User");
 var bcrypt = require('bcrypt-nodejs');
-
+var auth = require('passport-local-authenticate');
 
 var userController = {};
 
@@ -93,7 +93,7 @@ userController.logout = function(req, res) {
 //showUserDetail
 userController.showUserDetail = function (req, res) {
     return res.render('userDetail', {
-        title: 'Xin chào' + req.user.name,
+        title: 'Xin chào ' + req.user.name,
         user: req.user,
         mess: "10"     //mess xác nhận hiển thị user detail
     })
@@ -102,7 +102,7 @@ userController.showUserDetail = function (req, res) {
 userController.updateUserDetail =function(req, res) {
     if (req.user)
     {
-        if (!req.body.name || !req.body.password)
+        if (!req.body.name)
         {
             return res.render('userDetail', {
                 title: 'Xin chào ' + req.user.name,
@@ -111,91 +111,48 @@ userController.updateUserDetail =function(req, res) {
             })
         }
         else {
-            /*User.findOne({'username': req.body.username}, function (err, user) {
-                /*bcrypt.genSalt(10, function (err, salt) {
-                    if (err)
-                        return next(err);
-                    bcrypt.hash(req.body.password, salt, function (err, hash) {
-                        if(err)
-                            return next(err);
-                        /*bcrypt.compare(hash, user.password, function (err, result) {
-                            if (result === false)
-                            {
-                                return res.render('userDetail', {
-                                    title: 'Xin chào ' + req.user.name,
-                                    user: req.user,
-                                    mess: "12"       //Lỗi nhập mật khẩu cũ không chính xác
-                                })
-                            }
-                        })
-                        /*console.log(hash);
-                        console.log(user.password);
-
-                    });
-                });
-               if (user)
+            User.findOne({'username': req.body.username}, function (err, userInfo) {
+                if (req.body.newPassword || req.body.newPasswordConfirm)
                 {
-                    user.authenticate(req.body.password, function (err, model, passwordError) {
-                        if(passwordError){
-                            return res.render('userDetail', {
-                                title: 'Xin chào ' + req.user.name,
-                                user: req.user,
-                                mess: "12"       //Lỗi nhập mật khẩu cũ không chính xác
-                            })
-                        }
-                    })
-                }
-                /*if (!user.validPassword(req.body.password))
-                {
-                    return res.render('userDetail', {
-                        title: 'Xin chào ' + req.user.name,
-                        user: req.user,
-                        mess: "12"       //Lỗi nhập mật khẩu cũ không chính xác
-                    })
-                }
-            });*/
-            passport.authenticate('local')(req, res, function () {
-                if (req.body.newPassword || req.body.newPasswordConfirm) {
-                    if (req.body.newPassword != req.body.newPasswordConfirm) {
+                    if (req.body.newPassword != req.body.newPasswordConfirm)
+                    {
                         return res.render('userDetail', {
                             title: 'Xin chào ' + req.user.name,
                             user: req.user,
-                            mess: "13"      //Mật khẩu mới và xác nhận mật khẩu mới không trùng khớp
+                            mess: "12"       //Lỗi: Mật khẩu mới và xác nhận mật khẩu mới không trùng khớp
                         })
                     }
-                    else {
-                        User.update({_id: req.session.passport.User}, {
-                            name: req.body.name,
-                            password: req.body.newPassword
-                        }, function (err) {
-                            console.log(('update user detail error1'))
-                        });
-                        res.render('userDetail', {
-                            title: 'Xin chào ' + req.user.name,
-                            user: req.user,
-                            mess: "10"
-                        });
+                    else
+                    {
+                        userInfo.setPassword(req.body.newPassword, function () {
+                            userInfo.name = req.body.name;
+                            userInfo.save(function (err) {
+                                if (err)
+                                {
+                                    console.log('error');
+                                }
+                                else
+                                {
+                                    res.redirect('/');
+                                }
+                            });
+                        })
                     }
                 }
                 else
                 {
-                    User.update({_id: req.session.passport.User}, {
-                        name: req.body.name,
-                    }, function (err) {
-                        console.log(('update user detail error2'))
-                    });
-                    res.render('userDetail', {
-                        title: 'Xin chào ' + req.user.name,
-                        user: req.user,
-                        mess: "10"
-                    });
+                    userInfo.name = req.body.name;
+                    userInfo.save(function (err) {
+                        if (err)
+                        {
+                            console.log('error');
+                        }
+                        else
+                        {
+                           res.redirect('/');
+                        }
+                    })
                 }
-            });
-
-            return res.render('userDetail', {
-                title: 'Xin chào ' + req.user.name,
-                user: req.user,
-                mess: "12"       //Lỗi nhập mật khẩu cũ không chính xác
             })
 
         }

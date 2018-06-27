@@ -10,11 +10,6 @@
         {{/ifValue}}
         {{#ifValue "12" mess}}
             <script>
-                alert("Lỗi: Mật khẩu cũ nhập không chính xác");
-            </script>
-        {{/ifValue}}
-        {{#ifValue "13" mess}}
-            <script>
                 alert("Lỗi: Mật khẩu mới và xác nhận mật khẩu mới không trùng khớp");
             </script>
         {{/ifValue}}
@@ -36,8 +31,8 @@
                 <label>Nhập lại mật khẩu mới</label>
                 <input type="password" class="form-control" name="newPasswordConfirm">
             </div>
-            <label>Xác nhận mật khẩu cũ*</label>
-            <input type="text" class="form-control" name="password" placeholder="Mật khẩu cũ">
+            <!--<label>Xác nhận mật khẩu cũ*</label>
+            <input type="text" class="form-control" name="password" placeholder="Mật khẩu cũ">-->
             <div>
                 <p>&nbsp;</p>
             </div>
