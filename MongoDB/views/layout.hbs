@@ -72,23 +72,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a href="/signout" id="signoutButton" class="sign-up">Sign out</a><!--signup.html-->
                         </div>
                     {{else}}
-                        {{#ifValue "13" mess}}
-                            <div class="header-grid-right">
-                                <a href="/user/{{user._id}}" class="sign-up">Xin chào, {{user.name}}</a><!--signup.html-->
-                                <a href="/signout" id="signoutButton" class="sign-up">Sign out</a><!--signup.html-->
-                            </div>
-                        {{else}}
-                            <div class="header-grid-right">
-                                <a href="#" class="sign-in">Sign In</a>
-                                <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
-                                    <input type="text" name="username" placeholder="Username">
-                                    <input type="password" name="password" placeholder="Password">
-                                    <input type="submit" value="Go">
-                                </form>
-                                <label>|</label>
-                                <a href="/signup" class="sign-up2">Sign Up</a><!--signup.html-->
-                            </div>
-                        {{/ifValue}}
+                        <div class="header-grid-right">
+                            <a href="#" class="sign-in">Sign In</a>
+                            <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
+                                <input type="text" name="username" placeholder="Username">
+                                <input type="password" name="password" placeholder="Password">
+                                <input type="submit" value="Go">
+                            </form>
+                            <label>|</label>
+                            <a href="/signup" class="sign-up2">Sign Up</a><!--signup.html-->
+                        </div>
                     {{/ifValue}}
                 {{/ifValue}}
 
