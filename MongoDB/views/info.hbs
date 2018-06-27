@@ -102,11 +102,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <form method="get" action="/add-to-cart/{{this.selectSize}}">
                                     <ul>
                                         <li>Size:
-<<<<<<< HEAD
-                                            <select>
-                                               {{#each productInfo}}
-                                                    <option>{{this.size}}</option>
-=======
                                             <select name="selectSize">
                                                 <!--<option>L</option>
                                                 <option>XL</option>
@@ -114,14 +109,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <option>M</option>-->
                                                 {{#each productInfo}}
                                                     <option value="{{this._id}}">{{this.size}}</option>
->>>>>>> 1116171c8c1d4f38fdc017e8248ec89597e52066
                                                 {{/each}}
                                             </select>
                                         </li>
                                         <li>Color:
-<<<<<<< HEAD
-                                            <select>
-=======
                                             <select name="selectColor">
                                                 <!--<option>Red</option>
                                                 <option>Green</option>
@@ -133,7 +124,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                 <option>Black</option>
                                                 <option>White</option>
                                                 <option>Brown</option>-->
->>>>>>> 1116171c8c1d4f38fdc017e8248ec89597e52066
                                                 {{#each productInfo}}
                                                     <option value="{{this._id}}">{{this.color}}</option>
                                                 {{/each}}
@@ -141,11 +131,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </li>
                                     </ul>
                                     <div class="form-in">
-<<<<<<< HEAD
-                                        <a href="/add-to-cart/{{this._id}}">Add To Cart</a>
-=======
+                                        <!--<a href="/add-to-cart/this._id}}">Add To Cart</a>-->
                                         <button type="submit">Add To Cart</button>
->>>>>>> 1116171c8c1d4f38fdc017e8248ec89597e52066
                                     </div>
                                 </form>
                                 <div class="clearfix"></div>
