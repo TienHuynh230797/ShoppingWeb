@@ -55,10 +55,6 @@ userController.doSignup= function(req, res) {
 
             passport.authenticate('local')(req, res, function () {
                 res.redirect('/');
-                /*res.render('index', {
-                    mess: "4"     //Login OK
-                })*/
-
             });
         });
     }

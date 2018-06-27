@@ -71,8 +71,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 {{/if}}
                                 <p>{{this.product_name}}</p>
                                 <span>{{formatCurrency this.discount_price}}₫</span> | <label class="cat-in"> </label>
-                                <a href="#">Add to
-                                    Cart </a>
+                                <!--<a href="/this.url>Add to Cart </a>-->
+                                <a href="/add-to-cart/{{this._id}}">Add to Cart </a>
                             </div>
                         {{/each}}
                     </div>

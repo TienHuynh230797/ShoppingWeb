@@ -141,6 +141,11 @@ a.sign-up2{
 a#signoutButton {
     text-align: left;
 }
+
+#cartQuantity{
+    text-align: center;
+}
+
 a.sign-up:hover {
     color: #FD1E01;
 }

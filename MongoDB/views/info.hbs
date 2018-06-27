@@ -99,27 +99,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <ul>
                                         <li>Size:
                                             <select>
-                                                <!--<option>L</option>
-                                                <option>XL</option>
-                                                <option>S</option>
-                                                <option>M</option>-->
-                                                {{#each productInfo}}
+                                               {{#each productInfo}}
                                                     <option>{{this.size}}</option>
                                                 {{/each}}
                                             </select>
                                         </li>
                                         <li>Color:
                                             <select>
-                                                <!--<option>Red</option>
-                                                <option>Green</option>
-                                                <option>Blue</option>
-                                                <option>Pink</option>
-                                                <option>Yellow</option>
-                                                <option>Purple</option>
-                                                <option>Orange</option>
-                                                <option>Black</option>
-                                                <option>White</option>
-                                                <option>Brown</option>-->
                                                 {{#each productInfo}}
                                                     <option>{{this.color}}</option>
                                                 {{/each}}
@@ -127,7 +113,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </li>
                                     </ul>
                                     <div class="form-in">
-                                        <a href="#">Add To Cart</a>
+                                        <a href="/add-to-cart/{{this._id}}">Add To Cart</a>
                                     </div>
                                 </form>
                                 <div class="clearfix"></div>

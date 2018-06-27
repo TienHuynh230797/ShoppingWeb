@@ -1,0 +1,44 @@
+<body>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h1><span class="fa fa-sign-in"></span>Điền các thông tin giao hàng</h1>
+        <!-- hiển thị mọi tin nhắn được trả lại từ server cho việc cập nhật -->
+        {{#ifValue "11" mess}}
+            <script>
+                alert("Lỗi: Các thông tin có dấu * không được để trống");
+            </script>
+        {{/ifValue}}
+        <!-- SHOW USER DETAIL FORM -->
+        <form action="/checkoutInfoDelivery" method="post">
+            <div class="form-group">
+                <label>Họ tên người nhận*</label>
+                <input type="text" class="form-control" name="fullname" value="{{user.name}}">
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ liên hệ*</label>
+                <input type="text" class="form-control" name="address">
+            </div>
+            <div class="form-group">
+                <label>Email*</label>
+                <input type="text" class="form-control" name="email" value="{{user.username}}">
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại*</label>
+                <input type="text" class="form-control" name="phoneNumber">
+            </div>
+            <div>
+                <p>&nbsp;</p>
+            </div>
+            <div>
+                <p>*: Bắt buộc phải nhập</p>
+            </div>
+            <div>
+                <p>&nbsp;</p>
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg">Đặt hàng</button>
+        </form>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

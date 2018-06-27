@@ -45,5 +45,9 @@ router.get('/type/:id', type_controller.type);
 router.get('/search/', product_controller.search);
 router.get('/advanced-search/', product_controller.advanced_search);
 router.get('/shopping-cart/', cart_controller.get_list);
+//router.get('/shopping-cart/', cart_controller.getCart);
+router.get('/add-to-cart/:id', cart_controller.addToCart);
+router.get('/pay', cart_controller.pay);
+router.post('/checkoutInfoDelivery', cart_controller.checkoutInfoDelivery)
 
 module.exports = router;
