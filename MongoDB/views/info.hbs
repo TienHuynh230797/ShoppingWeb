@@ -99,42 +99,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <h5>{{formatCurrency productCurrent.discount_price}}₫</h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
-                                <form method="get" action="/add-to-cart/{{this.selectSize}}">
-                                    <ul>
-                                        <li>Size:
-                                            <select name="selectSize">
-                                                <!--<option>L</option>
-                                                <option>XL</option>
-                                                <option>S</option>
-                                                <option>M</option>-->
-                                                {{#each productInfo}}
-                                                    <option value="{{this._id}}">{{this.size}}</option>
-                                                {{/each}}
-                                            </select>
-                                        </li>
-                                        <li>Color:
-                                            <select name="selectColor">
-                                                <!--<option>Red</option>
-                                                <option>Green</option>
-                                                <option>Blue</option>
-                                                <option>Pink</option>
-                                                <option>Yellow</option>
-                                                <option>Purple</option>
-                                                <option>Orange</option>
-                                                <option>Black</option>
-                                                <option>White</option>
-                                                <option>Brown</option>-->
-                                                {{#each productInfo}}
-                                                    <option value="{{this._id}}">{{this.color}}</option>
-                                                {{/each}}
-                                            </select>
-                                        </li>
-                                    </ul>
-                                    <div class="form-in">
-                                        <!--<a href="/add-to-cart/this._id}}">Add To Cart</a>-->
-                                        <button type="submit">Add To Cart</button>
-                                    </div>
-                                </form>
+                                <ul>
+                                    <li>Size:
+                                        <select name="selectSize">
+                                            <!--<option>L</option>
+                                            <option>XL</option>
+                                            <option>S</option>
+                                            <option>M</option>-->
+                                            {{#each productInfo}}
+                                                <option value="{{this.product}}">{{this.size}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </li>
+                                    <li>Color:
+                                        <select name="selectColor">
+                                            <!--<option>Red</option>
+                                            <option>Green</option>
+                                            <option>Blue</option>
+                                            <option>Pink</option>
+                                            <option>Yellow</option>
+                                            <option>Purple</option>
+                                            <option>Orange</option>
+                                            <option>Black</option>
+                                            <option>White</option>
+                                            <option>Brown</option>-->
+                                            {{#each productInfo}}
+                                                <option value="{{this.product}}">{{this.color}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </li>
+                                </ul>
+                                <div class="form-in">
+                                    <a href="/add-to-cart/{{productCurrent._id}}">Add To Cart</a>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>

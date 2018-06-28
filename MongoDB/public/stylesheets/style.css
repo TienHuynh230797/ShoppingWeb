@@ -1361,7 +1361,7 @@ ul.grid_1 li.grid_1-desc p {
     float: left;
 }
 
-.form-in button {
+.form-in a {
     text-decoration: none;
     color: #fff;
     font-size: 1.2em;

@@ -1,3 +1,8 @@
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
 <body>
 <div class="header">
     <div class="container">
@@ -65,12 +70,12 @@
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price" class="text-center">{{this.item.discount_price}}</td>
+                        <td data-th="Price" class="text-center">{{formatCurrency this.item.discount_price}}</td>
                         <!--<td data-th="Quantity">
                             <input type="number" class="form-control text-center" value=this.item.qty}}>
                         </td>-->
                         <td id ="cartQuantity" data-th="Quantity" class="text-center">{{this.qty}}</td>
-                        <td data-th="Subtotal" class="text-center">{{this.discount_price}}</td>
+                        <td data-th="Subtotal" class="text-center">{{formatCurrency this.discount_price}}</td>
                         <th style="width:0%" class="text-center"></th>
                         <!--<td class="actions" data-th="">
                             <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
@@ -83,14 +88,11 @@
                 <div>No Product</div>
             {{/if}}
             <tfoot>
-            <tr class="visible-xs">
-                <td class="text-center"><strong>Total 1.99</strong></td>
-            </tr>
             <tr>
                 <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
                 <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>{{totalPrice}}</strong></td>
-                <td><a href="/pay" class="btn btn-success btn-block">Pay <i class="fa fa-angle-right"></i></a></td>
+                <td class="hidden-xs text-center"><strong>{{formatCurrency totalPrice}}</strong></td>
+                <td><a href="/pay" class="btn btn-success btn-block">Check out<i class="fa fa-angle-right"></i></a></td>
             </tr>
             </tfoot>
         </table>
