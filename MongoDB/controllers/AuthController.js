@@ -14,18 +14,6 @@ userController.home = function(req, res) {
     res.render('layout', { user : req.user });
 };
 
-// Go to loginOK page
-/*userController.loginOK = function(req, res, next) {
-    if (req.user)
-    {
-        res.render('index', {
-            mess: "10"
-        });
-    }
-    //res.render('index');
-
-};*/
-
 // Go to registration page
 userController.signup = function(req, res) {
     res.render('signup', {
@@ -80,27 +68,7 @@ userController.doSignup= function(req, res) {
 // Post login
 userController.doLogin = function(req, res) {
     passport.authenticate('local')(req, res, function () {
-        return res.redirect('/');
-    });
-    async.parallel({
-        list_products: function (callback) {
-            Product.find().limit(6).exec(callback);
-        },
-        list_type: function (callback) {
-            Type.find().exec(callback);
-        },
-    }, function (err, results) {
-        if (err) {
-            return next(err);
-        }
-        //Test user login
-        res.render('index', {
-            title: 'Home',
-            product_list: results.list_products,
-            type_list: results.list_type,
-            user: req.user,
-            mess: "15"
-        });
+        res.redirect('/');
     });
 };
 
