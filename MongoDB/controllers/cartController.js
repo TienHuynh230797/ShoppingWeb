@@ -96,16 +96,31 @@ exports.pay = function(req, res) {
         }
         if (!req.user)
         {
-            var cart = new Cart(req.session.cart);
-            res.render('shopping-cart', {
-                title: 'Shopping Cart',
-                typeCurrent: results.curType,
-                type_list: results.list_type,
-                product_list: cart.generateArray(),
-                totalPrice: cart.totalPrice,
-                user: req.user,
-                mess: "13" //Lỗi: Chưa đăng nhập
-            })
+            if (!req.session.cart)
+            {
+                res.render('shopping-cart', {
+                    title: 'Shopping Cart',
+                    typeCurrent: results.curType,
+                    type_list: results.list_type,
+                    product_list: null,
+                    totalPrice: null,
+                    user: req.user,
+                    mess: "13" //Lỗi: Chưa đăng nhập
+                })
+            }
+            else
+            {
+                var cart = new Cart(req.session.cart);
+                res.render('shopping-cart', {
+                    title: 'Shopping Cart',
+                    typeCurrent: results.curType,
+                    type_list: results.list_type,
+                    product_list: cart.generateArray(),
+                    totalPrice: cart.totalPrice,
+                    user: req.user,
+                    mess: "13" //Lỗi: Chưa đăng nhập
+                })
+            }
         } else {
             if (!req.session.cart)
             {
