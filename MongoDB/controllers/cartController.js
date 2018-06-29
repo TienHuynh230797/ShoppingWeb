@@ -140,6 +140,39 @@ exports.checkoutInfoDelivery = function(req, res) {
             mess: 11    //Lỗi: Các thông tin có dấu * không được để trống
         })
     }
+    else
+    {
+        async.parallel({
+            list_products: function (callback) {
+                Product.find().limit(6).exec(callback);
+            },
+            list_type: function (callback) {
+                Type.find().exec(callback);
+            },
+        }, function (err, results) {
+            if (err) {
+                return next(err);
+            }
+            //Test user login
+            if (req.user)
+            {
+                res.render('index', {
+                    title: 'Home',
+                    product_list: results.list_products,
+                    type_list: results.list_type,
+                    user: req.user,
+                    mess: "17"
+                });
+            } else {
+                res.render('index', {
+                    title: 'Home',
+                    product_list: results.list_products,
+                    type_list: results.list_type,
+                    mess: "0"
+                });
+            }
+        });
+    }
 }
 
 exports.addToCart = function (req, res, next) {

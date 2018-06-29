@@ -48,6 +48,6 @@ router.get('/shopping-cart/', cart_controller.get_list);
 //router.get('/shopping-cart/', cart_controller.getCart);
 router.get('/add-to-cart/:id', cart_controller.addToCart);
 router.get('/pay', cart_controller.pay);
-router.post('/checkoutInfoDelivery', cart_controller.checkoutInfoDelivery)
+router.post('/checkoutInfoDelivery', cart_controller.checkoutInfoDelivery);
 
 module.exports = router;
