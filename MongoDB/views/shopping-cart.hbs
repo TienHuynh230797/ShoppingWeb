@@ -84,17 +84,29 @@
                     </tr>
                     </tbody>
                 {{/each}}
+                <tfoot>
+                <tr>
+                    <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>{{formatCurrency totalPrice}}</strong></td>
+                    <td><a href="/pay" class="btn btn-success btn-block">Check out<i class="fa fa-angle-right"></i></a></td>
+                </tr>
+                </tfoot>
             {{else}}
-                <div>No Product</div>
+                <tbody>
+                <tr>
+                    <td>No Product</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>{{totalPrice}}</strong></td>
+                    <td><a href="/pay" class="btn btn-success btn-block">Check out<i class="fa fa-angle-right"></i></a></td>
+                </tr>
+                </tfoot>
             {{/if}}
-            <tfoot>
-            <tr>
-                <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-                <td colspan="2" class="hidden-xs"></td>
-                <td class="hidden-xs text-center"><strong>{{formatCurrency totalPrice}}</strong></td>
-                <td><a href="/pay" class="btn btn-success btn-block">Check out<i class="fa fa-angle-right"></i></a></td>
-            </tr>
-            </tfoot>
         </table>
     </div>
 </div>
