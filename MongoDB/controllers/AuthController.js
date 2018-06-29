@@ -2,6 +2,10 @@ var passport = require("passport");
 var User = require("../models/User");
 var bcrypt = require('bcrypt-nodejs');
 var auth = require('passport-local-authenticate');
+var Product = require('../models/product');
+var Type = require('../models/user_object');
+
+var async = require('async');
 
 var userController = {};
 
@@ -76,7 +80,27 @@ userController.doSignup= function(req, res) {
 // Post login
 userController.doLogin = function(req, res) {
     passport.authenticate('local')(req, res, function () {
-        res.redirect('/');
+        return res.redirect('/');
+    });
+    async.parallel({
+        list_products: function (callback) {
+            Product.find().limit(6).exec(callback);
+        },
+        list_type: function (callback) {
+            Type.find().exec(callback);
+        },
+    }, function (err, results) {
+        if (err) {
+            return next(err);
+        }
+        //Test user login
+        res.render('index', {
+            title: 'Home',
+            product_list: results.list_products,
+            type_list: results.list_type,
+            user: req.user,
+            mess: "15"
+        });
     });
 };
 

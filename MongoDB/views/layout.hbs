@@ -85,16 +85,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 alert("Thông báo: Đã đặt hàng thành công");
                             </script>
                         {{else}}
-                            <div class="header-grid-right">
-                                <a href="#" class="sign-in">Sign In</a>
-                                <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
-                                    <input type="text" name="username" placeholder="Username">
-                                    <input type="password" name="password" placeholder="Password">
-                                    <input type="submit" value="Go">
-                                </form>
-                                <label>|</label>
-                                <a href="/signup" class="sign-up2">Sign Up</a><!--signup.html-->
-                            </div>
+                            {{#ifValue "15" mess}}
+                                <div class="header-grid-right">
+                                    <a href="#" class="sign-in">Sign In</a>
+                                    <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
+                                        <input type="text" name="username" placeholder="Username">
+                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="submit" value="Go">
+                                    </form>
+                                    <label>|</label>
+                                    <a href="/signup" class="sign-up2">Sign Up</a><!--signup.html-->
+                                </div>
+                                <script>
+                                    alert("Lỗi: Tên đăng nhập hoặc mật khẩu sai");
+                                </script>
+                                {{else}}
+                                <div class="header-grid-right">
+                                    <a href="#" class="sign-in">Sign In</a>
+                                    <form action="/login" onsubmit="return validateForm()" method="post" name="loginForm">
+                                        <input type="text" name="username" placeholder="Username">
+                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="submit" value="Go">
+                                    </form>
+                                    <label>|</label>
+                                    <a href="/signup" class="sign-up2">Sign Up</a><!--signup.html-->
+                                </div>
+                            {{/ifValue}}
                         {{/ifValue}}
                     {{/ifValue}}
                 {{/ifValue}}
